@@ -81,7 +81,7 @@ ul.bad { padding-left: 20px; }
 .hand { display: flex; gap: 6px; overflow-x: auto; padding: 4px 0 8px; }
 .hc { flex: 0 0 96px; min-height: 64px; padding: 4px 6px; border: 0; border-top: 5px solid var(--c, #ccc); border-radius: 8px; background: #fff; text-align: left; font-size: 12px; }
 .hc b { display: block; font-size: 13px; }
-.hc.can { box-shadow: inset 0 0 0 2px #1f7a4d; }
+.hc.can, .mon.can { box-shadow: inset 0 0 0 2px #1f7a4d; }
 .bar { position: sticky; bottom: 0; z-index: 2; display: flex; flex-wrap: wrap; gap: 6px; padding: 6px 0 10px; background: #f3f6f4; }
 .bar .btn { flex: 1 1 45%; margin: 0; }
 .bar p { flex: 1 1 100%; margin: 0; }

@@ -6,23 +6,19 @@
 // 자리(to): -1 = 배틀 포켓몬, 0~4 = 벤치 번호. 패의 카드는 카드 번호(id)로 가리킨다.
 import { makeRng, shuffle } from './rng.js';
 import { isBasicPokemon } from './cards.js';
-import { baseDamage, calcDamage } from './damage.js';
+import { baseDamage, dealDamage } from './damage.js';
 import {
-  opp, topId, freshCond, flip, coinText, log, take, field, monAt, draw, stadiumName,
-  switchActive, maxHp, clearProtected, returnAfterAttack,
+  BENCH_MAX, opp, topId, freshCond, flip, coinText, log, take, field, monAt, draw, stadiumName,
+  switchActive, maxHp, clearProtected, returnAfterAttack, newMon, abilityOn,
 } from './core.js';
-import { TRAINERS, PENDING } from './effects/trainers.js';
+import { TRAINERS, PENDING as TRAINER_PENDING } from './effects/trainers.js';
+import { POKEMON, PENDING as POKEMON_PENDING, attackCost, retreatCost, firstTurnOK } from './effects/pokemon.js';
 
-export { maxHp } from './core.js';
-export const BENCH_MAX = 5;
+export { maxHp, newMon, BENCH_MAX } from './core.js';
+const PENDING = { ...TRAINER_PENDING, ...POKEMON_PENDING };
 const HAND_SIZE = 7;
 const NO_MOVE = ['asleep', 'paralyzed']; // 기술·후퇴 불가 상태
 const name = (db, m) => db.get(topId(m)).name;
-
-// 필드에 나온 포켓몬 한 마리. cards = 아래(기본)부터 위(지금 모습)까지
-export function newMon(id, turn) {
-  return { cards: [id], energy: [], tool: null, damage: 0, cond: freshCond(), playedTurn: turn, evolvedTurn: -1 };
-}
 
 // 쓸 수 있는 기술 목록: 카드의 기술 + 도구가 주는 기술(메가레쿠쟈캡)
 export const attacksOf = (m, db) => [...db.get(topId(m)).attacks, ...((m.tool && db.get(m.tool).attacks) || [])];
@@ -201,11 +197,18 @@ export function legalActions(s, db) {
       out.push(...trainerActions(s, P, c, spots, db));
     }
   }
-  out.push(...retreatActions(P, db));
+  // 특성: 차례에 1번(포켓몬마다), 용암동굴 등으로 없어지지 않았고, 처리할 것이 있을 때
+  for (const [to, m] of spots) {
+    const ab = POKEMON[topId(m)]?.ability;
+    if (ab && m.abilityTurn !== s.turn && abilityOn(s, m, db) && ab.canUse(s, s.current, m, to, db)) out.push({ type: 'ability', to });
+  }
+  out.push(...retreatActions(s, P, db));
   const A = P.active;
-  if (s.turn !== 1 && !NO_MOVE.includes(A.cond.special)) {
+  if (!NO_MOVE.includes(A.cond.special) && A.fx?.noAttack !== s.turn) {
     attacksOf(A, db).forEach((atk, index) => {
-      if (canPay(atk.cost, A.energy, db)) out.push({ type: 'attack', index });
+      if (s.turn === 1 && !firstTurnOK(A, index)) return; // 선공 첫 차례 (라이코 ex 우레두르기는 예외)
+      if (A.fx?.lockAttack?.turn === s.turn && A.fx.lockAttack.name === atk.name) return;
+      if (canPay(attackCost(s, s.current, A, atk, db), A.energy, db)) out.push({ type: 'attack', index });
     });
   }
   out.push({ type: 'end' });
@@ -241,10 +244,10 @@ function combinations(arr, k) {
   return [...combinations(rest, k - 1).map(c => [x, ...c]), ...combinations(rest, k)];
 }
 
-function retreatActions(P, db) {
+function retreatActions(s, P, db) {
   const A = P.active;
-  if (P.retreated || !P.bench.length || NO_MOVE.includes(A.cond.special)) return [];
-  const cost = db.get(topId(A)).retreat;
+  if (P.retreated || !P.bench.length || NO_MOVE.includes(A.cond.special) || A.fx?.noRetreat === s.turn) return [];
+  const cost = retreatCost(s, s.current, A, db);
   const picks = new Map(combinations(A.energy, cost).map(c => c.sort()).map(c => [c.join('|'), c]));
   return P.bench.flatMap((_, to) => [...picks.values()].map(discard => ({ type: 'retreat', to, discard })));
 }
@@ -295,7 +298,16 @@ function doMain(s, a, db) {
       log(s, p, `${name(db, m)} → ${c.name} 진화`);
       m.cards.push(take(P.hand, a.id));
       m.evolvedTurn = s.turn;
-      m.cond = freshCond();
+      m.cond = freshCond(); // 진화하면 특수 상태 회복, 받고 있던 효과도 사라짐
+      m.fx = {};
+      m.abilityTurn = -1;
+      break;
+    }
+    case 'ability': {
+      const m = monAt(P, a.to);
+      m.abilityTurn = s.turn;
+      log(s, p, `${name(db, m)}의 특성 「${db.get(topId(m)).ability.name}」`);
+      POKEMON[topId(m)].ability.use(s, p, m, a.to, db);
       break;
     }
     case 'attach': {
@@ -359,16 +371,13 @@ function attack(s, p, index, db) {
       return finishAttack(s, db);
     }
   }
-  const D = s.players[opp(p)].active;
-  const base = baseDamage(atk);
-  if (base > 0) {
-    const dmg = calcDamage(base, card, db.get(topId(D)), true, { defenderTool: D.tool });
-    D.damage += dmg;
-    if (dmg > 0) D.attackDamaged = true;
-    log(s, p, `${name(db, D)}에게 ${dmg} 데미지`);
+  // 효과가 있는 기술은 effects/의 함수가 데미지와 효과를 처리. 없으면 적힌 숫자만큼 데미지
+  const effect = fromTool ? TRAINERS[A.tool].attack : POKEMON[topId(A)]?.attacks?.[index];
+  if (effect) effect(s, { p, o: opp(p), A, D: s.players[opp(p)].active, atk, card }, db);
+  else {
+    if (baseDamage(atk) > 0) dealDamage(s, p, -1, baseDamage(atk), db);
+    if (atk.text && !card.implemented) log(s, p, '(기술 효과 미구현)');
   }
-  if (fromTool) TRAINERS[A.tool].attack(s, p, db);
-  else if (atk.text && !card.implemented) log(s, p, '(기술 효과 미구현)');
   if (s.pending) s.after = 'attack';
   else finishAttack(s, db);
 }

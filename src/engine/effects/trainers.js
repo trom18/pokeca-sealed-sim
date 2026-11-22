@@ -4,18 +4,25 @@
 //  - 덱에서 찾는 효과는 적힌 장수보다 적게(0장도) 고를 수 있다.
 // 스타디움·특수 에너지·특별주문조끼처럼 늘 켜져 있는 효과는 core.js·damage.js에 있다.
 import { shuffle } from '../rng.js';
-import { ID, opp, draw, log, flip, coinText, take, field, monAt, heal, switchActive, stadiumName, topId } from '../core.js';
+import { ID, BENCH_MAX, opp, draw, log, flip, coinText, take, field, monAt, heal, switchActive, stadiumName, topId, newMon } from '../core.js';
 
 const nameOf = (db, m) => db.get(topId(m)).name;
 const deckLeft = (s, p) => s.players[p].deck.length > 0;
 
-// 덱에서 찾기 조건
+// 덱에서 찾기 조건 (c = 카드, pd = 선택 요청)
 const FILTERS = {
-  lantern: (c, picked) => c.category === '기본 에너지' && ['불꽃', '번개'].includes(c.energyType) && !picked.includes(c.no),
+  lantern: (c, pd) => c.category === '기본 에너지' && ['불꽃', '번개'].includes(c.energyType) && !pd.picked.includes(c.no),
   supportOrStadium: c => c.category === '서포트' || c.category === '스타디움',
   noRulePokemon: c => c.category === '포켓몬' && !c.rule,
+  name: (c, pd) => c.category === '포켓몬' && c.name === pd.arg,
+  basicPokemon: c => c.category === '포켓몬' && c.stage === '기본',
+  basicEnergy: c => c.category === '기본 에너지',
+  energy: c => c.category.endsWith('에너지'),
 };
-const pick = (s, p, filter, max) => { s.pending = { player: p, kind: 'pick', filter, max, picked: [] }; };
+// 덱에서 찾기 시작. dest: 'hand' 패로(공개) / 'bench' 벤치로 / 'attach' to 자리의 포켓몬에게 붙임
+export function pick(s, p, filter, max, { dest = 'hand', arg, to } = {}) {
+  s.pending = { player: p, kind: 'pick', filter, max, picked: [], dest, arg, to };
+}
 const drawLog = (s, p, n) => log(s, p, `덱에서 ${draw(s.players[p], n).length}장 뽑음`);
 
 // 카드 번호 → { canPlay(s, p), play(s, p, db) } / 도구 기술은 attack(s, p, db)
@@ -55,19 +62,23 @@ export const TRAINERS = {
   [ID.가이]: { canPlay: deckLeft, play: (s, p) => drawLog(s, p, 3) },
   // 메가레쿠쟈캡의 기술 「델타기프트」: 캡이 붙은 자신의 포켓몬 전원에게 덱에서 기본 에너지를 1장씩
   [ID.캡]: {
-    attack(s, p) {
-      const targets = field(s.players[p]).filter(([, m]) => m.tool === ID.캡).map(([to]) => to);
-      s.pending = { player: p, kind: 'deltaGift', targets };
+    attack(s, c) {
+      const targets = field(s.players[c.p]).filter(([, m]) => m.tool === ID.캡).map(([to]) => to);
+      s.pending = { player: c.p, kind: 'deltaGift', targets };
     },
   },
 };
 
 const basicsInDeck = (s, p, db) => [...new Set(s.players[p].deck)].filter(id => db.get(id).category === '기본 에너지');
-const candidates = (s, pd, db) => [...new Set(s.players[pd.player].deck)].filter(id => FILTERS[pd.filter](db.get(id), pd.picked));
+const candidates = (s, pd, db) => {
+  if (pd.dest === 'bench' && s.players[pd.player].bench.length >= BENCH_MAX) return [];
+  return [...new Set(s.players[pd.player].deck)].filter(id => FILTERS[pd.filter](db.get(id), pd));
+};
+const DEST_TEXT = { hand: '덱에서 찾아 공개하고 패로', bench: '덱에서 벤치로', attach: '덱에서 붙임' };
 
-function finishSearch(s, p, picked, db) {
-  s.players[p].deck = shuffle(s.rng, s.players[p].deck);
-  log(s, p, picked.length ? `덱에서 찾아 공개하고 패로: ${picked.map(id => db.get(id).name).join(', ')}` : '덱에서 찾은 카드 없음');
+function finishSearch(s, pd, db) {
+  s.players[pd.player].deck = shuffle(s.rng, s.players[pd.player].deck);
+  log(s, pd.player, pd.picked.length ? `${DEST_TEXT[pd.dest ?? 'hand']}: ${pd.picked.map(id => db.get(id).name).join(', ')}` : '덱에서 찾은 카드 없음');
   s.pending = null;
 }
 
@@ -78,10 +89,13 @@ export const PENDING = {
     resolve(s, pd, a, db) {
       const P = s.players[pd.player];
       if (a.type === 'choose') {
-        P.hand.push(take(P.deck, a.id));
+        const id = take(P.deck, a.id);
+        if (pd.dest === 'bench') P.bench.push(newMon(id, s.turn));
+        else if (pd.dest === 'attach') monAt(P, pd.to).energy.push(id);
+        else P.hand.push(id);
         pd.picked.push(a.id);
       }
-      if (a.type === 'done' || pd.picked.length >= pd.max || !candidates(s, pd, db).length) finishSearch(s, pd.player, pd.picked, db);
+      if (a.type === 'done' || pd.picked.length >= pd.max || !candidates(s, pd, db).length) finishSearch(s, pd, db);
     },
   },
   deltaGift: {

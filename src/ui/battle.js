@@ -12,21 +12,33 @@ const CPU_DELAY = 700; // 컴퓨터 행동 사이 간격(ms)
 const WHO = ['나', '컴퓨터'];
 const COND = { asleep: '잠듦', paralyzed: '마비', confused: '혼란' };
 const SEARCH = {
-  lantern: '덱에서 기본 (불꽃)·(번개) 에너지를 1장씩까지 고르세요',
-  supportOrStadium: '덱에서 서포트·스타디움을 합계 3장까지 고르세요',
-  noRulePokemon: '덱에서 포켓몬(룰을 가진 포켓몬 제외)을 1장 고르세요',
+  lantern: () => '덱에서 기본 (불꽃)·(번개) 에너지를 1장씩까지 고르세요',
+  supportOrStadium: () => '덱에서 서포트·스타디움을 합계 3장까지 고르세요',
+  noRulePokemon: () => '덱에서 포켓몬(룰을 가진 포켓몬 제외)을 1장 고르세요',
+  name: pd => `덱에서 「${pd.arg}」를 ${pd.max}장까지 골라 벤치로`,
+  basicPokemon: pd => `덱에서 기본 포켓몬을 ${pd.max}장까지 골라 벤치로`,
+  basicEnergy: pd => `덱에서 기본 에너지를 ${pd.max}장까지 골라 패로`,
+  energy: () => '덱에서 에너지를 1장 골라 이 포켓몬에게 붙이세요',
 };
+const FX = { noAttack: '기술 불가', noRetreat: '후퇴 불가', protect: '보호 중' };
 const PROMPT = {
   setupActive: () => '배틀 포켓몬으로 낼 기본 포켓몬을 고르세요',
   setupBench: () => '벤치에 낼 기본 포켓몬을 고르세요 (다 냈으면 완료)',
   extraDraw: () => '상대가 멀리건을 했습니다. 몇 장 더 뽑을까요?',
   extraBench: () => '추가로 뽑은 기본 포켓몬을 벤치에 낼 수 있습니다',
   promote: () => '새 배틀 포켓몬을 고르세요',
-  pick: pd => `${SEARCH[pd.filter]} (그만 찾으려면 완료)`,
+  pick: pd => `${SEARCH[pd.filter](pd)} (그만 찾으려면 완료)`,
   deltaGift: (pd, db, v) => `델타기프트: ${spot(db, v.players[ME], pd.targets[0])}에게 붙일 기본 에너지를 고르세요`,
   switchOwn: () => '배틀 포켓몬과 바꿀 벤치 포켓몬을 고르세요',
   moveEnergy: () => '새 배틀 포켓몬에게 옮길 에너지를 고르세요',
   catch: () => '상대의 배틀 포켓몬과 바꿀 상대 벤치 포켓몬을 고르세요',
+  snipe: pd => `${pd.amount} 데미지를 줄 상대 포켓몬을 고르세요 (벤치는 약점·저항력 없음)`,
+  forcedSwitch: () => '상대 기술로 배틀 포켓몬을 바꿉니다. 새 배틀 포켓몬을 고르세요',
+  oppEnergy: () => '트래쉬할 상대 배틀 포켓몬의 에너지를 고르세요',
+  ownEnergy: pd => `트래쉬할 에너지 ${pd.count}개를 고르세요`,
+  voltage: () => '트래쉬할 기본 에너지를 고르세요 (1장당 60 데미지)',
+  buddyBoost: () => '버디 부스트: 붙일 에너지와 포켓몬을 고르세요 (불꽃·번개 1장씩까지)',
+  deepSea: () => '심해 드로: 덱 아래로 되돌릴 패를 고르세요 (안 해도 됨)',
 };
 
 const aiRng = makeRng(Date.now() >>> 0); // 컴퓨터의 선택·가위바위보용 (저장하지 않음)
@@ -51,24 +63,34 @@ function label(db, v, a) {
     case 'trainer': return a.to !== undefined ? `붙이기 → ${spot(db, P, a.to)}` : a.pair ? '좌·우 2장으로 내기' : '사용하기';
     case 'retreat': return `후퇴 → ${spot(db, P, a.to)} (트래쉬: ${a.discard.map(id => db.get(id).energyType).join('·') || '없음'})`;
     case 'attack': { const atk = attacksOf(P.active, db)[a.index]; return `${atk.name} ${atk.damage ?? ''}`; }
+    case 'ability': return `특성 「${db.get(topId(a.to === -1 ? P.active : P.bench[a.to])).ability.name}」 사용`;
     case 'end': return '차례 끝';
-    case 'done': return kind === 'deltaGift' ? '붙이지 않음' : '완료';
+    case 'done': return { deltaGift: '붙이지 않음', deepSea: '되돌리지 않음' }[kind] ?? '완료';
     case 'choose':
-      if (a.id) return db.get(a.id).name;
+      if (a.ids) return a.ids.length ? `트래쉬: ${a.ids.map(id => db.get(id).energyType ?? db.get(id).name).join('·')} (${a.ids.length}장)` : '트래쉬하지 않음';
+      if (a.id && a.to !== undefined) return `${db.get(a.id).name} → ${spot(db, P, a.to)}`;
+      if (a.id) return kind === 'deepSea' ? `덱 아래로: ${db.get(a.id).name}` : db.get(a.id).name;
       if (a.n !== undefined) return `${a.n}장`;
-      return kind === 'catch' ? `상대 ${spot(db, v.players[CPU], a.to)}` : spot(db, P, a.to);
+      return ['catch', 'snipe'].includes(kind) ? `상대 ${spot(db, v.players[CPU], a.to)}` : spot(db, P, a.to);
   }
 }
 
 // ---------- 필드 그리기 ----------
 
-function monBox(db, m, side, to, big) {
+// 아직 끝나지 않은 기술 효과 (다음 차례 기술 불가 등)
+const fxText = (m, turn) => [
+  ...Object.entries(FX).filter(([k]) => m.fx?.[k] >= turn).map(([, t]) => t),
+  ...(m.fx?.lockAttack?.turn >= turn ? [`${m.fx.lockAttack.name} 불가`] : []),
+];
+
+function monBox(db, m, side, to, big, turn) {
   if (!m) return `<div class="mon empty${big ? ' big' : ''}"></div>`;
   const c = db.get(topId(m));
   const hp = maxHp(m, db);
   const left = Math.max(0, hp - m.damage);
-  const conds = [m.cond.poison && '독', m.cond.burn && '화상', COND[m.cond.special]].filter(Boolean);
-  return `<button class="mon${big ? ' big' : ''}" data-type="${esc(c.type)}" data-act="mon" data-arg="${side},${to}">` +
+  const conds = [m.cond.poison && '독', m.cond.burn && '화상', COND[m.cond.special], ...fxText(m, turn)].filter(Boolean);
+  const can = side === ME && shown.some(a => a.type === 'ability' && a.to === to);
+  return `<button class="mon${big ? ' big' : ''}${can ? ' can' : ''}" data-type="${esc(c.type)}" data-act="mon" data-arg="${side},${to}">` +
     `<span class="nm">${esc(c.name)}</span><span class="hp">HP ${left}/${hp}</span>` +
     `<span class="hpbar"><i style="width:${(left / hp) * 100}%"></i></span>` +
     `<span>${m.energy.map(id => dot(db.get(id).energyType)).join('')}</span>` +
@@ -76,8 +98,8 @@ function monBox(db, m, side, to, big) {
     (conds.length ? `<small class="cond">${conds.join(' ')}</small>` : '') + '</button>';
 }
 
-const benchRow = (db, bench, side) =>
-  `<div class="benchrow">${Array.from({ length: 5 }, (_, i) => monBox(db, bench[i], side, i, false)).join('')}</div>`;
+const benchRow = (db, bench, side, turn) =>
+  `<div class="benchrow">${Array.from({ length: 5 }, (_, i) => monBox(db, bench[i], side, i, false, turn)).join('')}</div>`;
 
 function pinfo(P, side) {
   const hand = side === ME ? P.hand.length : P.handCount;
@@ -130,11 +152,11 @@ function battle(ctx, m) {
     (mine && g.pending ? `<div class="prompt"><b>${esc(PROMPT[g.pending.kind](g.pending, db, v))}</b><div class="opts">` +
       shown.map(a => actBtn(a, label(db, v, a), a.type === 'done' ? 'sub' : '')).join('') + '</div></div>' : '') +
     pinfo(op, CPU) +
-    (op.bench ? benchRow(db, op.bench, CPU) + `<div class="active">${monBox(db, op.active, CPU, -1, true)}</div>`
+    (op.bench ? benchRow(db, op.bench, CPU, v.turn) + `<div class="active">${monBox(db, op.active, CPU, -1, true, v.turn)}</div>`
       : '<p class="muted">컴퓨터가 포켓몬을 뒷면으로 놓는 중…</p>') +
     middle(db, v) +
-    `<div class="active">${monBox(db, me.active, ME, -1, true)}</div>` +
-    benchRow(db, me.bench, ME) +
+    `<div class="active">${monBox(db, me.active, ME, -1, true, v.turn)}</div>` +
+    benchRow(db, me.bench, ME, v.turn) +
     pinfo(me, ME) +
     handRow(db, me.hand) +
     bar(db, m, v, mine);
@@ -211,7 +233,8 @@ function monSheet(ctx, side, to) {
     (m.cards.length > 1 ? ` · 진화 전: ${m.cards.slice(0, -1).map(id => esc(db.get(id).name)).join(' → ')}` : '') + '<br>' +
     `에너지: ${m.energy.map(id => esc(db.get(id).name)).join(', ') || '없음'}` +
     (m.tool ? ` · 도구: ${esc(db.get(m.tool).name)}` : '') + (conds.length ? ` · 상태: ${conds.join(', ')}` : '') + '</p>';
-  const own = side === ME && to === -1 && !g.pending ? shown.filter(a => a.type === 'attack' || a.type === 'retreat') : [];
+  const own = side === ME && !g.pending
+    ? shown.filter(a => (a.type === 'ability' && a.to === to) || (to === -1 && (a.type === 'attack' || a.type === 'retreat'))) : [];
   const v = viewFor(g, ME);
   showSheet(state + detailHtml(c) + own.map(a => actBtn(a, label(db, v, a))).join(''), c.type);
 }

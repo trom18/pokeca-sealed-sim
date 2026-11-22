@@ -8,6 +8,7 @@ export const ID = {
   그로우: '104/076', 니트로: '105/076', 버블: '106/076',
 };
 
+export const BENCH_MAX = 5;
 export const opp = p => 1 - p;
 export const topId = m => m.cards[m.cards.length - 1];
 export const freshCond = () => ({ poison: 0, burn: false, special: null, paralyzedTurn: 0 });
@@ -25,10 +26,22 @@ export function draw(P, n) {
   return got;
 }
 
-// 배틀 포켓몬과 벤치 포켓몬 교체. 벤치로 간 포켓몬은 특수 상태가 회복된다.
+// 필드에 나온 포켓몬 한 마리. cards = 아래(기본)부터 위(지금 모습)까지.
+// fx = 기술로 받은 효과 { noAttack, noRetreat, protect: 그 효과가 걸리는 차례 번호, lockAttack: { name, turn } }
+export function newMon(id, turn) {
+  return { cards: [id], energy: [], tool: null, damage: 0, cond: freshCond(), fx: {}, playedTurn: turn, evolvedTurn: -1, abilityTurn: -1 };
+}
+
+// 기술 효과 걸기 (그 차례에만 작동)
+export const setFx = (m, key, value) => { (m.fx ??= {})[key] = value; };
+// 고속이동 등: 이 차례에 기술의 데미지·효과를 받지 않는 상태인지
+export const isProtected = (s, m) => m.fx?.protect === s.turn;
+
+// 배틀 포켓몬과 벤치 포켓몬 교체. 벤치로 간 포켓몬은 특수 상태가 회복되고 받고 있던 효과가 사라진다.
 export function switchActive(P, to) {
   const old = P.active;
   old.cond = freshCond();
+  old.fx = {};
   P.active = P.bench[to];
   P.bench[to] = old;
 }
@@ -76,12 +89,12 @@ export function trashEnergy(s, p, m, ids, db, byOwnAttack) {
   const P = s.players[p];
   for (const id of ids) {
     P.discard.push(take(m.energy, id));
-    if (byOwnAttack && id === ID.니트로 && db.get(topId(m)).type === '불꽃') s.returnToHand.push({ p, id });
+    if (byOwnAttack && id === ID.니트로 && db.get(topId(m)).type === '불꽃') (s.returnToHand ??= []).push({ p, id });
   }
 }
 
 export function returnAfterAttack(s, db) {
-  for (const { p, id } of s.returnToHand) {
+  for (const { p, id } of s.returnToHand ?? []) {
     s.players[p].hand.push(take(s.players[p].discard, id));
     log(s, p, `${db.get(id).name}을(를) 패로 되돌림`);
   }
