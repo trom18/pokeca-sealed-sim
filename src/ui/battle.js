@@ -1,7 +1,7 @@
 // 매치 화면: 가위바위보 → 선후공 → 대전 → 판 결과 → 매치 결과. 플레이어 0 = 나, 1 = 컴퓨터.
 // 화면은 viewFor(나)만 보고 그린다 → 컴퓨터의 패·덱·프라이즈는 화면에 나올 수 없다.
 import { esc, colorOf, detailHtml, showSheet } from './card.js';
-import { legalActions, applyAction, viewFor, actor } from '../engine/game.js';
+import { legalActions, applyAction, viewFor, actor, attacksOf, maxHp } from '../engine/game.js';
 import { HANDS, playRps, chooseOrder, finishGame } from '../engine/match.js';
 import { makeRng, randInt } from '../engine/rng.js';
 import { chooseAction } from '../ai/ai.js';
@@ -11,12 +11,22 @@ const CPU = 1;
 const CPU_DELAY = 700; // 컴퓨터 행동 사이 간격(ms)
 const WHO = ['나', '컴퓨터'];
 const COND = { asleep: '잠듦', paralyzed: '마비', confused: '혼란' };
+const SEARCH = {
+  lantern: '덱에서 기본 (불꽃)·(번개) 에너지를 1장씩까지 고르세요',
+  supportOrStadium: '덱에서 서포트·스타디움을 합계 3장까지 고르세요',
+  noRulePokemon: '덱에서 포켓몬(룰을 가진 포켓몬 제외)을 1장 고르세요',
+};
 const PROMPT = {
-  setupActive: '배틀 포켓몬으로 낼 기본 포켓몬을 고르세요',
-  setupBench: '벤치에 낼 기본 포켓몬을 고르세요 (다 냈으면 완료)',
-  extraDraw: '상대가 멀리건을 했습니다. 몇 장 더 뽑을까요?',
-  extraBench: '추가로 뽑은 기본 포켓몬을 벤치에 낼 수 있습니다',
-  promote: '새 배틀 포켓몬을 고르세요',
+  setupActive: () => '배틀 포켓몬으로 낼 기본 포켓몬을 고르세요',
+  setupBench: () => '벤치에 낼 기본 포켓몬을 고르세요 (다 냈으면 완료)',
+  extraDraw: () => '상대가 멀리건을 했습니다. 몇 장 더 뽑을까요?',
+  extraBench: () => '추가로 뽑은 기본 포켓몬을 벤치에 낼 수 있습니다',
+  promote: () => '새 배틀 포켓몬을 고르세요',
+  pick: pd => `${SEARCH[pd.filter]} (그만 찾으려면 완료)`,
+  deltaGift: (pd, db, v) => `델타기프트: ${spot(db, v.players[ME], pd.targets[0])}에게 붙일 기본 에너지를 고르세요`,
+  switchOwn: () => '배틀 포켓몬과 바꿀 벤치 포켓몬을 고르세요',
+  moveEnergy: () => '새 배틀 포켓몬에게 옮길 에너지를 고르세요',
+  catch: () => '상대의 배틀 포켓몬과 바꿀 상대 벤치 포켓몬을 고르세요',
 };
 
 const aiRng = makeRng(Date.now() >>> 0); // 컴퓨터의 선택·가위바위보용 (저장하지 않음)
@@ -33,16 +43,20 @@ const actBtn = (a, text, cls = '') => `<button class="btn ${cls}" data-act="act"
 
 function label(db, v, a) {
   const P = v.players[ME];
+  const kind = v.pending?.kind;
   switch (a.type) {
     case 'bench': return '벤치에 내기';
     case 'evolve': return `진화 → ${spot(db, P, a.to)}`;
     case 'attach': return `붙이기 → ${spot(db, P, a.to)}`;
     case 'trainer': return a.to !== undefined ? `붙이기 → ${spot(db, P, a.to)}` : a.pair ? '좌·우 2장으로 내기' : '사용하기';
     case 'retreat': return `후퇴 → ${spot(db, P, a.to)} (트래쉬: ${a.discard.map(id => db.get(id).energyType).join('·') || '없음'})`;
-    case 'attack': { const atk = db.get(topId(P.active)).attacks[a.index]; return `${atk.name} ${atk.damage ?? ''}`; }
+    case 'attack': { const atk = attacksOf(P.active, db)[a.index]; return `${atk.name} ${atk.damage ?? ''}`; }
     case 'end': return '차례 끝';
-    case 'done': return '완료';
-    case 'choose': return a.id ? db.get(a.id).name : a.n !== undefined ? `${a.n}장` : spot(db, P, a.to);
+    case 'done': return kind === 'deltaGift' ? '붙이지 않음' : '완료';
+    case 'choose':
+      if (a.id) return db.get(a.id).name;
+      if (a.n !== undefined) return `${a.n}장`;
+      return kind === 'catch' ? `상대 ${spot(db, v.players[CPU], a.to)}` : spot(db, P, a.to);
   }
 }
 
@@ -51,11 +65,12 @@ function label(db, v, a) {
 function monBox(db, m, side, to, big) {
   if (!m) return `<div class="mon empty${big ? ' big' : ''}"></div>`;
   const c = db.get(topId(m));
-  const left = Math.max(0, c.hp - m.damage);
+  const hp = maxHp(m, db);
+  const left = Math.max(0, hp - m.damage);
   const conds = [m.cond.poison && '독', m.cond.burn && '화상', COND[m.cond.special]].filter(Boolean);
   return `<button class="mon${big ? ' big' : ''}" data-type="${esc(c.type)}" data-act="mon" data-arg="${side},${to}">` +
-    `<span class="nm">${esc(c.name)}</span><span class="hp">HP ${left}/${c.hp}</span>` +
-    `<span class="hpbar"><i style="width:${(left / c.hp) * 100}%"></i></span>` +
+    `<span class="nm">${esc(c.name)}</span><span class="hp">HP ${left}/${hp}</span>` +
+    `<span class="hpbar"><i style="width:${(left / hp) * 100}%"></i></span>` +
     `<span>${m.energy.map(id => dot(db.get(id).energyType)).join('')}</span>` +
     (m.tool ? `<small>도구 ${esc(db.get(m.tool).name)}</small>` : '') +
     (conds.length ? `<small class="cond">${conds.join(' ')}</small>` : '') + '</button>';
@@ -95,7 +110,7 @@ function bar(db, m, v, mine) {
   if (!mine) return `<div class="bar"><p class="muted">컴퓨터가 생각하는 중…</p></div>`;
   if (g.pending) return '';
   const A = v.players[ME].active;
-  const attacks = db.get(topId(A)).attacks.map((atk, index) => {
+  const attacks = attacksOf(A, db).map((atk, index) => {
     const a = shown.find(x => x.type === 'attack' && x.index === index);
     return a ? actBtn(a, label(db, v, a)) : `<button class="btn" disabled>${esc(`${atk.name} ${atk.damage ?? ''}`)}</button>`;
   }).join('');
@@ -112,7 +127,7 @@ function battle(ctx, m) {
   const turn = v.phase === 'setup' ? '대전 준비' : `${v.turn}번째 차례 · ${WHO[v.current]}의 차례`;
   return top(`${gameName(m)} · 나 ${m.wins[0]} : ${m.wins[1]} 컴퓨터`) +
     `<p class="turn">${turn}${m.suddenDeath ? ' · 프라이즈 1장 먼저 가져가면 승리' : ''}</p>` +
-    (mine && g.pending ? `<div class="prompt"><b>${PROMPT[g.pending.kind]}</b><div class="opts">` +
+    (mine && g.pending ? `<div class="prompt"><b>${esc(PROMPT[g.pending.kind](g.pending, db, v))}</b><div class="opts">` +
       shown.map(a => actBtn(a, label(db, v, a), a.type === 'done' ? 'sub' : '')).join('') + '</div></div>' : '') +
     pinfo(op, CPU) +
     (op.bench ? benchRow(db, op.bench, CPU) + `<div class="active">${monBox(db, op.active, CPU, -1, true)}</div>`
@@ -191,7 +206,8 @@ function monSheet(ctx, side, to) {
   const m = to === -1 ? P.active : P.bench[to];
   const c = db.get(topId(m));
   const conds = [m.cond.poison && '독', m.cond.burn && '화상', COND[m.cond.special]].filter(Boolean);
-  const state = `<p class="muted">${WHO[side]}의 ${to === -1 ? '배틀 포켓몬' : `벤치${to + 1}`} · 남은 HP ${Math.max(0, c.hp - m.damage)}/${c.hp}` +
+  const hp = maxHp(m, db);
+  const state = `<p class="muted">${WHO[side]}의 ${to === -1 ? '배틀 포켓몬' : `벤치${to + 1}`} · 남은 HP ${Math.max(0, hp - m.damage)}/${hp}` +
     (m.cards.length > 1 ? ` · 진화 전: ${m.cards.slice(0, -1).map(id => esc(db.get(id).name)).join(' → ')}` : '') + '<br>' +
     `에너지: ${m.energy.map(id => esc(db.get(id).name)).join(', ') || '없음'}` +
     (m.tool ? ` · 도구: ${esc(db.get(m.tool).name)}` : '') + (conds.length ? ` · 상태: ${conds.join(', ')}` : '') + '</p>';

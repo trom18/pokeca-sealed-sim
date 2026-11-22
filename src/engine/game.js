@@ -1,38 +1,31 @@
 // 대전 엔진. 상태(state)는 평범한 데이터라 그대로 저장·복원·복사할 수 있다.
-// 규칙 근거: docs/RESEARCH.md 2절. 가정: docs/PLAN.md 0절. 카드 효과는 M4~M6에서 더한다.
+// 규칙 근거: docs/RESEARCH.md 2절. 가정: docs/PLAN.md 0절. 카드 효과: effects/ (M4 트레이너스, M5~M6 포켓몬)
 //   legalActions(state, db)  지금 할 수 있는 행동 목록 (선택 요청이 있으면 그 선택지)
 //   applyAction(state, action, db)  새 상태를 돌려준다 (원래 상태는 그대로)
 //   viewFor(state, player)  그 플레이어가 볼 수 있는 정보만
 // 자리(to): -1 = 배틀 포켓몬, 0~4 = 벤치 번호. 패의 카드는 카드 번호(id)로 가리킨다.
-import { makeRng, random, shuffle } from './rng.js';
+import { makeRng, shuffle } from './rng.js';
 import { isBasicPokemon } from './cards.js';
 import { baseDamage, calcDamage } from './damage.js';
+import {
+  opp, topId, freshCond, flip, coinText, log, take, field, monAt, draw, stadiumName,
+  switchActive, maxHp, clearProtected, returnAfterAttack,
+} from './core.js';
+import { TRAINERS, PENDING } from './effects/trainers.js';
 
+export { maxHp } from './core.js';
 export const BENCH_MAX = 5;
 const HAND_SIZE = 7;
 const NO_MOVE = ['asleep', 'paralyzed']; // 기술·후퇴 불가 상태
-
-const opp = p => 1 - p;
-const topId = m => m.cards[m.cards.length - 1];
 const name = (db, m) => db.get(topId(m)).name;
-const freshCond = () => ({ poison: 0, burn: false, special: null, paralyzedTurn: 0 });
-const flip = s => random(s.rng) < 0.5; // true = 앞면
-const coinText = heads => (heads ? '앞면' : '뒷면');
-const log = (s, p, t) => s.log.push({ p, t });
-const take = (arr, id) => arr.splice(arr.indexOf(id), 1)[0];
-const field = P => [[-1, P.active], ...P.bench.map((m, i) => [i, m])].filter(([, m]) => m);
-const monAt = (P, to) => (to === -1 ? P.active : P.bench[to]);
-
-function draw(P, n) {
-  const got = P.deck.splice(0, n);
-  P.hand.push(...got);
-  return got;
-}
 
 // 필드에 나온 포켓몬 한 마리. cards = 아래(기본)부터 위(지금 모습)까지
 export function newMon(id, turn) {
   return { cards: [id], energy: [], tool: null, damage: 0, cond: freshCond(), playedTurn: turn, evolvedTurn: -1 };
 }
+
+// 쓸 수 있는 기술 목록: 카드의 기술 + 도구가 주는 기술(메가레쿠쟈캡)
+export const attacksOf = (m, db) => [...db.get(topId(m)).attacks, ...((m.tool && db.get(m.tool).attacks) || [])];
 
 // 지금 행동해야 하는 플레이어
 export const actor = s => (s.pending ? s.pending.player : s.current);
@@ -47,7 +40,8 @@ export function newGame({ decks, first, seed, db, prizeCount = 4, suddenDeath = 
       mulligans: 0, extraDraws: 0, extraDrawn: [], turnsTaken: 0,
       energyAttached: false, supporterPlayed: false, stadiumPlayed: false, retreated: false,
     })),
-    stadium: null, pending: null, queue: [], next: 'startGame', winner: null, reason: null, log: [],
+    stadium: null, pending: null, queue: [], next: 'startGame', after: null, returnToHand: [],
+    winner: null, reason: null, log: [],
   };
   dealHands(s, db);
   const order = [first, opp(first)];
@@ -113,13 +107,13 @@ function startTurn(s, p) {
 }
 
 function gameOver(s, winner, reason) {
-  Object.assign(s, { phase: 'over', winner, reason, pending: null, queue: [], next: null });
+  Object.assign(s, { phase: 'over', winner, reason, pending: null, queue: [], next: null, after: null });
   log(s, null, reason);
 }
 
 // ---------- 선택 요청 ----------
 
-// 이 선택 요청이 필요한지. 벤치가 1마리뿐인 교체는 바로 처리한다.
+// 준비·교체 선택이 필요한지. 벤치가 1마리뿐인 교체는 바로 처리한다.
 function needed(s, db) {
   const { player: p, kind } = s.pending;
   const P = s.players[p];
@@ -135,37 +129,48 @@ function needed(s, db) {
 }
 
 function pendingOptions(s, db) {
-  const { player: p, kind, max } = s.pending;
-  const P = s.players[p];
+  const pd = s.pending;
+  if (PENDING[pd.kind]) return PENDING[pd.kind].options(s, pd, db);
+  const P = s.players[pd.player];
   const basics = ids => [...new Set(ids)].filter(id => isBasicPokemon(db.get(id))).map(id => ({ type: 'choose', id }));
-  switch (kind) {
+  switch (pd.kind) {
     case 'setupActive': return basics(P.hand);
     case 'setupBench': return [...basics(P.hand), { type: 'done' }];
     case 'extraBench': return [...basics(P.extraDrawn), { type: 'done' }];
-    case 'extraDraw': return Array.from({ length: max + 1 }, (_, n) => ({ type: 'choose', n }));
+    case 'extraDraw': return Array.from({ length: pd.max + 1 }, (_, n) => ({ type: 'choose', n }));
     case 'promote': return P.bench.map((_, to) => ({ type: 'choose', to }));
   }
 }
 
 function resolvePending(s, a, db) {
-  const { player: p, kind } = s.pending;
-  const P = s.players[p];
-  if (kind === 'setupActive') {
+  const pd = s.pending;
+  if (PENDING[pd.kind]) return PENDING[pd.kind].resolve(s, pd, a, db);
+  const P = s.players[pd.player];
+  if (pd.kind === 'setupActive') {
     P.active = newMon(take(P.hand, a.id), 0);
     s.pending = null;
-  } else if (kind === 'setupBench' || kind === 'extraBench') {
+  } else if (pd.kind === 'setupBench' || pd.kind === 'extraBench') {
     if (a.type === 'done') { s.pending = null; return; }
     P.bench.push(newMon(take(P.hand, a.id), 0));
-    if (kind === 'extraBench') take(P.extraDrawn, a.id);
+    if (pd.kind === 'extraBench') take(P.extraDrawn, a.id);
     if (!needed(s, db)) s.pending = null;
-  } else if (kind === 'extraDraw') {
+  } else if (pd.kind === 'extraDraw') {
     P.extraDrawn = draw(P, a.n);
-    log(s, p, `상대가 멀리건한 만큼 ${a.n}장 더 뽑음`);
+    log(s, pd.player, `상대가 멀리건한 만큼 ${a.n}장 더 뽑음`);
     s.pending = null;
-    s.queue.unshift({ player: p, kind: 'extraBench' });
-  } else if (kind === 'promote') {
-    promote(s, p, a.to, db);
+    s.queue.unshift({ player: pd.player, kind: 'extraBench' });
+  } else if (pd.kind === 'promote') {
+    promote(s, pd.player, a.to, db);
     s.pending = null;
+  }
+}
+
+// 카드 효과의 선택지가 하나뿐이면 묻지 않고 처리
+function settle(s, db) {
+  while (s.pending && PENDING[s.pending.kind]) {
+    const options = PENDING[s.pending.kind].options(s, s.pending, db);
+    if (options.length !== 1) return;
+    PENDING[s.pending.kind].resolve(s, s.pending, options[0], db);
   }
 }
 
@@ -199,7 +204,7 @@ export function legalActions(s, db) {
   out.push(...retreatActions(P, db));
   const A = P.active;
   if (s.turn !== 1 && !NO_MOVE.includes(A.cond.special)) {
-    db.get(topId(A)).attacks.forEach((atk, index) => {
+    attacksOf(A, db).forEach((atk, index) => {
       if (canPay(atk.cost, A.energy, db)) out.push({ type: 'attack', index });
     });
   }
@@ -212,12 +217,14 @@ const canEvolve = (s, m, c, db) => name(db, m) === c.evolvesFrom && m.playedTurn
 
 function trainerActions(s, P, c, spots, db) {
   const id = c.no;
+  const p = s.current;
+  const usable = TRAINERS[id]?.canPlay?.(s, p) ?? true; // 효과를 하나도 처리할 수 없으면 쓸 수 없다
   switch (c.category) {
-    case '아이템': return [{ type: 'trainer', id }];
-    case '서포트': return P.supporterPlayed || s.turn === 1 ? [] : [{ type: 'trainer', id }];
+    case '아이템': return usable ? [{ type: 'trainer', id }] : [];
+    case '서포트': return P.supporterPlayed || s.turn === 1 || !usable ? [] : [{ type: 'trainer', id }];
     case '포켓몬의 도구': return spots.filter(([, m]) => !m.tool).map(([to]) => ({ type: 'trainer', id, to }));
     case '스타디움': {
-      if (P.stadiumPlayed || (s.stadium && db.get(s.stadium.cards[0]).name === c.name)) return [];
+      if (P.stadiumPlayed || stadiumName(s, db) === c.name) return [];
       if (!c.pairRule) return [{ type: 'trainer', id }];
       // 전설 스타디움: 패의 좌측 1장 + 같은 이름 우측 1장을 함께 낸다
       const pair = id.includes('좌측') && P.hand.find(h => h.includes('우측') && db.get(h).name === c.name);
@@ -242,7 +249,7 @@ function retreatActions(P, db) {
   return P.bench.flatMap((_, to) => [...picks.values()].map(discard => ({ type: 'retreat', to, discard })));
 }
 
-// 기술 비용: 타입 칸은 그 타입 에너지로, 무색 칸은 남은 아무 에너지로
+// 기술 비용: 타입 칸은 그 타입 에너지로, 무색 칸은 남은 아무 에너지로 (특수 에너지는 적힌 타입 1개분)
 export function canPay(cost, energy, db) {
   const left = energy.map(id => db.get(id).energyType);
   for (const t of cost) {
@@ -264,6 +271,12 @@ export function applyAction(state, action, db) {
   const s = structuredClone(state);
   if (s.pending) resolvePending(s, action, db);
   else doMain(s, action, db);
+  settle(s, db);
+  if (!s.pending && s.after === 'attack') {
+    s.after = null;
+    finishAttack(s, db);
+  }
+  clearProtected(s, db);
   advance(s, db);
   return s;
 }
@@ -294,10 +307,7 @@ function doMain(s, a, db) {
     }
     case 'trainer': playTrainer(s, p, a, db); break;
     case 'retreat': retreat(s, p, a, db); break;
-    case 'attack':
-      attack(s, p, a.index, db);
-      if (s.phase !== 'over') endTurn(s, db);
-      break;
+    case 'attack': attack(s, p, a.index, db); break;
     case 'end': endTurn(s, db); break;
   }
 }
@@ -320,6 +330,7 @@ function playTrainer(s, p, a, db) {
     if (c.category === '서포트') P.supporterPlayed = true;
     P.discard.push(a.id);
     log(s, p, `${c.name}${note}`);
+    TRAINERS[a.id]?.play?.(s, p, db);
   }
 }
 
@@ -327,17 +338,17 @@ function retreat(s, p, a, db) {
   const P = s.players[p];
   const A = P.active;
   for (const id of a.discard) P.discard.push(take(A.energy, id));
-  A.cond = freshCond();
-  P.active = P.bench[a.to];
-  P.bench[a.to] = A;
+  switchActive(P, a.to);
   P.retreated = true;
   log(s, p, `${name(db, A)} 후퇴 → ${name(db, P.active)}`);
 }
 
+// 기술: 데미지 → 효과(선택이 필요하면 멈췄다가 이어서) → finishAttack
 function attack(s, p, index, db) {
   const A = s.players[p].active;
   const card = db.get(topId(A));
-  const atk = card.attacks[index];
+  const atk = attacksOf(A, db)[index];
+  const fromTool = index >= card.attacks.length;
   log(s, p, `${card.name}의 「${atk.name}」`);
   if (A.cond.special === 'confused') {
     const heads = flip(s);
@@ -345,15 +356,28 @@ function attack(s, p, index, db) {
     if (!heads) {
       A.damage += 30;
       log(s, p, '기술 실패 — 자신에게 데미지 카운터 3개');
-      resolveKOs(s, db);
-      return;
+      return finishAttack(s, db);
     }
   }
   const D = s.players[opp(p)].active;
-  const dmg = calcDamage(baseDamage(atk), card, db.get(topId(D)), true);
-  D.damage += dmg;
-  log(s, p, `${name(db, D)}에게 ${dmg} 데미지${atk.text && !card.implemented ? ' (기술 효과 미구현)' : ''}`);
+  const base = baseDamage(atk);
+  if (base > 0) {
+    const dmg = calcDamage(base, card, db.get(topId(D)), true, { defenderTool: D.tool });
+    D.damage += dmg;
+    if (dmg > 0) D.attackDamaged = true;
+    log(s, p, `${name(db, D)}에게 ${dmg} 데미지`);
+  }
+  if (fromTool) TRAINERS[A.tool].attack(s, p, db);
+  else if (atk.text && !card.implemented) log(s, p, '(기술 효과 미구현)');
+  if (s.pending) s.after = 'attack';
+  else finishAttack(s, db);
+}
+
+function finishAttack(s, db) {
+  returnAfterAttack(s, db);
   resolveKOs(s, db);
+  for (const P of s.players) for (const [, m] of field(P)) delete m.attackDamaged;
+  if (s.phase !== 'over') endTurn(s, db);
 }
 
 // 차례 끝: 포켓몬 체크 → 기절 처리 → 교체 요청 → 다음 차례
@@ -394,16 +418,19 @@ function checkup(s, db) {
   }
 }
 
-// HP만큼 데미지를 받은 포켓몬 기절 → 트래쉬, 상대가 프라이즈(보통 1, ex 2, 메가진화 ex 3) → 승패 확인
+// 최대 HP만큼 데미지를 받은 포켓몬 기절 → 트래쉬, 상대가 프라이즈(보통 1, ex 2, 메가진화 ex 3) → 승패 확인
+// 전설의 산정: (무색) 포켓몬이 상대 기술 데미지로 기절하면 1장 적게
 function resolveKOs(s, db) {
   const owed = [0, 0];
+  const peak = stadiumName(s, db) === '전설의 산정';
   s.players.forEach((P, p) => {
     for (const [to, m] of field(P)) {
+      if (m.damage < maxHp(m, db)) continue;
       const c = db.get(topId(m));
-      if (m.damage < c.hp) continue;
+      const prizes = (c.rule === '메가진화 ex' ? 3 : c.rule === '포켓몬 ex' ? 2 : 1) - (peak && c.type === '무색' && m.attackDamaged ? 1 : 0);
       log(s, p, `${c.name} 기절`);
       P.discard.push(...m.cards, ...m.energy, ...(m.tool ? [m.tool] : []));
-      owed[opp(p)] += c.rule === '메가진화 ex' ? 3 : c.rule === '포켓몬 ex' ? 2 : 1;
+      owed[opp(p)] += prizes;
       if (to === -1) P.active = null;
       else P.bench[to] = null;
     }
