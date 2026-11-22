@@ -3,7 +3,7 @@ import { cardLine, colorOf, esc } from './card.js';
 import { BASIC_ENERGY_TYPES, basicEnergyId } from '../engine/cards.js';
 import { poolCounts, deckProblems, deckSize, unimplemented } from '../engine/deck.js';
 import { newMatch } from '../engine/match.js';
-import { autoBuild } from '../ai/deckbuild.js';
+import { smartBuild } from '../ai/deckbuild.js';
 
 const RARITIES = ['C', 'U', 'R', 'RR', 'AR', 'SR', 'SAR', 'MUR'];
 const SECRET = ['AR', 'SR', 'SAR', 'MUR'];
@@ -116,7 +116,7 @@ export const actions = {
   sub: (ctx, id) => { if (!--ctx.S.deck[id]) delete ctx.S.deck[id]; ctx.update(); },
   auto: ctx => {
     if (deckSize(ctx.S.deck) && !confirm('지금 덱을 지우고 자동으로 만들까요?')) return;
-    ctx.S.deck = autoBuild(poolCounts(ctx.S.packs, ctx.data), ctx.db);
+    ctx.S.deck = smartBuild(poolCounts(ctx.S.packs, ctx.data), ctx.db, ctx.ratings);
     ctx.update();
   },
   clear: ctx => {

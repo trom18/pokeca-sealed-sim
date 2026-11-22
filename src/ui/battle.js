@@ -166,7 +166,7 @@ function battle(ctx, m) {
   shown = mine ? legalActions(g, db) : [];
   const [me, op] = v.players;
   const turn = v.phase === 'setup' ? '대전 준비' : `${v.turn}번째 차례 · ${WHO[v.current]}의 차례`;
-  return top(`${gameName(m)} · 나 ${m.wins[0]} : ${m.wins[1]} 컴퓨터`) +
+  return top(`${gameName(m)} · 나 ${m.wins[0]} : ${m.wins[1]} 컴퓨터(${ctx.S.level})`) +
     `<p class="turn">${turn}${m.suddenDeath ? ' · 프라이즈 1장 먼저 가져가면 승리' : ''}</p>` +
     (mine && g.pending ? `<div class="prompt"><b>${esc(PROMPT[g.pending.kind](g.pending, db, v))}</b><div class="opts">` +
       shown.map(a => actBtn(a, label(db, v, a), a.type === 'done' ? 'sub' : '')).join('') + '</div></div>' : '') +
@@ -233,7 +233,8 @@ export function afterRender(ctx) {
     timer = null;
     const g = cpuTurn();
     if (!g) return;
-    ctx.S.match.game = applyAction(g, chooseAction(viewFor(g, CPU), legalActions(g, ctx.db), aiRng), ctx.db);
+    const choice = chooseAction(viewFor(g, CPU), legalActions(g, ctx.db), aiRng, { level: ctx.S.level, db: ctx.db, deck: ctx.S.match.decks[CPU] });
+    ctx.S.match.game = applyAction(g, choice, ctx.db);
     ctx.update();
   }, CPU_DELAY);
 }
