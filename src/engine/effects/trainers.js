@@ -4,7 +4,7 @@
 //  - 덱에서 찾는 효과는 적힌 장수보다 적게(0장도) 고를 수 있다.
 // 스타디움·특수 에너지·특별주문조끼처럼 늘 켜져 있는 효과는 core.js·damage.js에 있다.
 import { shuffle } from '../rng.js';
-import { ID, BENCH_MAX, opp, draw, log, flip, coinText, take, field, monAt, heal, switchActive, stadiumName, topId, newMon } from '../core.js';
+import { ID, BENCH_MAX, opp, draw, log, flip, coinText, take, field, monAt, heal, switchActive, stadiumName, topId, newMon, evolveMon } from '../core.js';
 
 const nameOf = (db, m) => db.get(topId(m)).name;
 const deckLeft = (s, p) => s.players[p].deck.length > 0;
@@ -18,8 +18,11 @@ const FILTERS = {
   basicPokemon: c => c.category === '포켓몬' && c.stage === '기본',
   basicEnergy: c => c.category === '기본 에너지',
   energy: c => c.category.endsWith('에너지'),
+  pokemon: c => c.category === '포켓몬',
+  any: () => true,
+  evolvesFrom: (c, pd) => c.category === '포켓몬' && c.evolvesFrom === pd.arg,
 };
-// 덱에서 찾기 시작. dest: 'hand' 패로(공개) / 'bench' 벤치로 / 'attach' to 자리의 포켓몬에게 붙임
+// 덱에서 찾기 시작. dest: 'hand' 패로(공개) / 'bench' 벤치로 / 'attach' to 자리의 포켓몬에게 붙임 / 'evolve' to 자리의 포켓몬을 진화
 export function pick(s, p, filter, max, { dest = 'hand', arg, to } = {}) {
   s.pending = { player: p, kind: 'pick', filter, max, picked: [], dest, arg, to };
 }
@@ -74,7 +77,7 @@ const candidates = (s, pd, db) => {
   if (pd.dest === 'bench' && s.players[pd.player].bench.length >= BENCH_MAX) return [];
   return [...new Set(s.players[pd.player].deck)].filter(id => FILTERS[pd.filter](db.get(id), pd));
 };
-const DEST_TEXT = { hand: '덱에서 찾아 공개하고 패로', bench: '덱에서 벤치로', attach: '덱에서 붙임' };
+const DEST_TEXT = { hand: '덱에서 찾아 공개하고 패로', bench: '덱에서 벤치로', attach: '덱에서 붙임', evolve: '덱에서 찾아 진화' };
 
 function finishSearch(s, pd, db) {
   s.players[pd.player].deck = shuffle(s.rng, s.players[pd.player].deck);
@@ -92,6 +95,7 @@ export const PENDING = {
         const id = take(P.deck, a.id);
         if (pd.dest === 'bench') P.bench.push(newMon(id, s.turn));
         else if (pd.dest === 'attach') monAt(P, pd.to).energy.push(id);
+        else if (pd.dest === 'evolve') evolveMon(monAt(P, pd.to), id, s.turn);
         else P.hand.push(id);
         pd.picked.push(a.id);
       }

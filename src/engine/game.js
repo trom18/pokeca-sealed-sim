@@ -8,11 +8,11 @@ import { makeRng, shuffle } from './rng.js';
 import { isBasicPokemon } from './cards.js';
 import { baseDamage, dealDamage } from './damage.js';
 import {
-  BENCH_MAX, opp, topId, freshCond, flip, coinText, log, take, field, monAt, draw, stadiumName,
-  switchActive, maxHp, clearProtected, returnAfterAttack, newMon, abilityOn,
+  BENCH_MAX, opp, topId, flip, coinText, log, take, field, monAt, draw, stadiumName,
+  switchActive, maxHp, clearProtected, returnAfterAttack, newMon, abilityOn, evolveMon,
 } from './core.js';
 import { TRAINERS, PENDING as TRAINER_PENDING } from './effects/trainers.js';
-import { POKEMON, PENDING as POKEMON_PENDING, attackCost, retreatCost, firstTurnOK } from './effects/pokemon.js';
+import { POKEMON, PENDING as POKEMON_PENDING, attackCost, retreatCost, firstTurnOK, attackUsable } from './effects/pokemon.js';
 
 export { maxHp, newMon, BENCH_MAX } from './core.js';
 const PENDING = { ...TRAINER_PENDING, ...POKEMON_PENDING };
@@ -191,6 +191,8 @@ export function legalActions(s, db) {
       if (c.evolvesFrom && P.turnsTaken > 0) {
         for (const [to, m] of spots) if (canEvolve(s, m, c, db)) out.push({ type: 'evolve', id, to });
       }
+      // 패에서 쓰는 특성 (파이어로 ex 익사이팅 다이브)
+      if (POKEMON[id]?.fromHand?.canUse(s, s.current, db)) out.push({ type: 'handAbility', id });
     } else if (c.category.endsWith('에너지')) {
       if (!P.energyAttached) for (const [to] of spots) out.push({ type: 'attach', id, to });
     } else {
@@ -208,6 +210,7 @@ export function legalActions(s, db) {
     attacksOf(A, db).forEach((atk, index) => {
       if (s.turn === 1 && !firstTurnOK(A, index)) return; // 선공 첫 차례 (라이코 ex 우레두르기는 예외)
       if (A.fx?.lockAttack?.turn === s.turn && A.fx.lockAttack.name === atk.name) return;
+      if (!attackUsable(s, s.current, A, index, db)) return;
       if (canPay(attackCost(s, s.current, A, atk, db), A.energy, db)) out.push({ type: 'attack', index });
     });
   }
@@ -292,15 +295,16 @@ function doMain(s, a, db) {
     case 'bench':
       P.bench.push(newMon(take(P.hand, a.id), s.turn));
       log(s, p, `${c.name}을(를) 벤치에 냄`);
+      POKEMON[a.id]?.onBench?.(s, p, P.bench.length - 1, db); // 메가레쿠쟈 ex 패왕의 포효
+      break;
+    case 'handAbility':
+      P.bench.push(newMon(take(P.hand, a.id), s.turn));
+      log(s, p, `${c.name}의 특성 「${c.ability.name}」 — 패에서 벤치로`);
       break;
     case 'evolve': {
       const m = monAt(P, a.to);
       log(s, p, `${name(db, m)} → ${c.name} 진화`);
-      m.cards.push(take(P.hand, a.id));
-      m.evolvedTurn = s.turn;
-      m.cond = freshCond(); // 진화하면 특수 상태 회복, 받고 있던 효과도 사라짐
-      m.fx = {};
-      m.abilityTurn = -1;
+      evolveMon(m, take(P.hand, a.id), s.turn);
       break;
     }
     case 'ability': {
@@ -361,6 +365,7 @@ function attack(s, p, index, db) {
   const card = db.get(topId(A));
   const atk = attacksOf(A, db)[index];
   const fromTool = index >= card.attacks.length;
+  s.players[p].lastAttack = { name: atk.name, turn: s.turn }; // 기라티나 카오스크롤러 연속 사용 확인용
   log(s, p, `${card.name}의 「${atk.name}」`);
   if (A.cond.special === 'confused') {
     const heads = flip(s);

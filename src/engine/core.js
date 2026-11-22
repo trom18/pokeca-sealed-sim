@@ -6,6 +6,7 @@ export const ID = {
   주먹밥: '063/076', 랜턴: '064/076', 캡: '065/076', 조끼: '066/076', MC: '067/076', 성한: '068/076',
   풍란: '069/076', 피아나: '070/076', 가이: '88/M-P', 포켓패드: '87/M-P', 캐처: '098/076',
   그로우: '104/076', 니트로: '105/076', 버블: '106/076',
+  고지: '036/076', 강철톤: '038/076',
 };
 
 export const BENCH_MAX = 5;
@@ -30,6 +31,15 @@ export function draw(P, n) {
 // fx = 기술로 받은 효과 { noAttack, noRetreat, protect: 그 효과가 걸리는 차례 번호, lockAttack: { name, turn } }
 export function newMon(id, turn) {
   return { cards: [id], energy: [], tool: null, damage: 0, cond: freshCond(), fx: {}, playedTurn: turn, evolvedTurn: -1, abilityTurn: -1 };
+}
+
+// 진화: 카드를 위에 올린다. 데미지·에너지·도구는 그대로, 특수 상태와 받고 있던 효과는 사라진다
+export function evolveMon(m, id, turn) {
+  m.cards.push(id);
+  m.evolvedTurn = turn;
+  m.cond = freshCond();
+  m.fx = {};
+  m.abilityTurn = -1;
 }
 
 // 기술 효과 걸기 (그 차례에만 작동)
@@ -72,10 +82,10 @@ export function clearProtected(s, db) {
   for (const P of s.players) for (const [, m] of field(P)) if (bubbled(m, db)) m.cond = freshCond();
 }
 
-// 특수 상태 걸기 (기술 효과용). 걸리면 true
-export function addCondition(s, m, kind, db) {
+// 특수 상태 걸기 (기술 효과용). 걸리면 true. poisonCounters: 독으로 올리는 데미지 카운터 수 (아리아도스 격통독은 4)
+export function addCondition(s, m, kind, db, poisonCounters = 1) {
   if (bubbled(m, db)) return false;
-  if (kind === 'poison') m.cond.poison = Math.max(m.cond.poison, 1);
+  if (kind === 'poison') m.cond.poison = Math.max(m.cond.poison, poisonCounters);
   else if (kind === 'burn') m.cond.burn = true;
   else {
     m.cond.special = kind;

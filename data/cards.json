@@ -1285,7 +1285,7 @@
     "value": "-30"
    },
    "retreat": 2,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005029",
     "jp": "https://limitlesstcg.com/cards/jp/M6/29",
@@ -1334,7 +1334,7 @@
     "value": "-30"
    },
    "retreat": 2,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005030",
     "jp": "https://limitlesstcg.com/cards/jp/M6/30",
@@ -1376,7 +1376,7 @@
     "value": "-30"
    },
    "retreat": 3,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005031",
     "jp": "https://limitlesstcg.com/cards/jp/M6/31",
@@ -1417,7 +1417,7 @@
     "value": "-30"
    },
    "retreat": 3,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005032",
     "jp": "https://limitlesstcg.com/cards/jp/M6/32",
@@ -1461,7 +1461,7 @@
     "value": "-30"
    },
    "retreat": 3,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005033",
     "jp": "https://limitlesstcg.com/cards/jp/M6/33",
@@ -1504,7 +1504,7 @@
    },
    "resistance": null,
    "retreat": 1,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005034",
     "jp": "https://limitlesstcg.com/cards/jp/M6/34",
@@ -1541,7 +1541,7 @@
    },
    "resistance": null,
    "retreat": 1,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005035",
     "jp": "https://limitlesstcg.com/cards/jp/M6/35",
@@ -1581,7 +1581,7 @@
    },
    "resistance": null,
    "retreat": 1,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005036",
     "jp": "https://limitlesstcg.com/cards/jp/M6/36",
@@ -1620,7 +1620,7 @@
    },
    "resistance": null,
    "retreat": 4,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005037",
     "jp": "https://limitlesstcg.com/cards/jp/M6/37",
@@ -1663,7 +1663,7 @@
    },
    "resistance": null,
    "retreat": 4,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005038",
     "jp": "https://limitlesstcg.com/cards/jp/M6/38",
@@ -1711,7 +1711,7 @@
    },
    "resistance": null,
    "retreat": 4,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005039",
     "jp": "https://limitlesstcg.com/cards/jp/M6/39",
@@ -1753,7 +1753,7 @@
    },
    "resistance": null,
    "retreat": 2,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005040",
     "jp": "https://limitlesstcg.com/cards/jp/M6/40",
@@ -1798,7 +1798,7 @@
    },
    "resistance": null,
    "retreat": 1,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005041",
     "jp": "https://limitlesstcg.com/cards/jp/M6/41",
@@ -1836,7 +1836,7 @@
    },
    "resistance": null,
    "retreat": 2,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005042",
     "jp": "https://limitlesstcg.com/cards/jp/M6/42",
@@ -1878,7 +1878,7 @@
    },
    "resistance": null,
    "retreat": 3,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005043",
     "jp": "https://limitlesstcg.com/cards/jp/M6/43",
@@ -1925,7 +1925,7 @@
    },
    "resistance": null,
    "retreat": 1,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005044",
     "jp": "https://limitlesstcg.com/cards/jp/M6/44",
@@ -1972,7 +1972,7 @@
    },
    "resistance": null,
    "retreat": 1,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005045",
     "jp": "https://limitlesstcg.com/cards/jp/M6/45",
@@ -2018,7 +2018,7 @@
    },
    "resistance": null,
    "retreat": 1,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005046",
     "jp": "https://limitlesstcg.com/cards/jp/M6/46",
@@ -2055,7 +2055,7 @@
    },
    "resistance": null,
    "retreat": 1,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005047",
     "jp": "https://limitlesstcg.com/cards/jp/M6/47",
@@ -2103,7 +2103,7 @@
    },
    "resistance": null,
    "retreat": 2,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005048",
     "jp": "https://limitlesstcg.com/cards/jp/M6/48",
@@ -2148,7 +2148,7 @@
    "weakness": null,
    "resistance": null,
    "retreat": 2,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005049",
     "jp": "https://limitlesstcg.com/cards/jp/M6/49",
@@ -2183,7 +2183,7 @@
    "weakness": null,
    "resistance": null,
    "retreat": 1,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005050",
     "jp": "https://limitlesstcg.com/cards/jp/M6/50",
@@ -2218,7 +2218,7 @@
    "weakness": null,
    "resistance": null,
    "retreat": 2,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005051",
     "jp": "https://limitlesstcg.com/cards/jp/M6/51",
@@ -2257,7 +2257,7 @@
    "weakness": null,
    "resistance": null,
    "retreat": 2,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005052",
     "jp": "https://limitlesstcg.com/cards/jp/M6/52",
@@ -2302,7 +2302,7 @@
    "weakness": null,
    "resistance": null,
    "retreat": 1,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005053",
     "jp": "https://limitlesstcg.com/cards/jp/M6/53",
@@ -2337,7 +2337,7 @@
    },
    "resistance": null,
    "retreat": 0,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005054",
     "jp": "https://limitlesstcg.com/cards/jp/M6/54",
@@ -2386,7 +2386,7 @@
     "value": "-30"
    },
    "retreat": 1,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005055",
     "jp": "https://limitlesstcg.com/cards/jp/M6/55",
@@ -2431,7 +2431,7 @@
     "value": "-30"
    },
    "retreat": 1,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005056",
     "jp": "https://limitlesstcg.com/cards/jp/M6/56",
@@ -2469,7 +2469,7 @@
    },
    "resistance": null,
    "retreat": 2,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005057",
     "jp": "https://limitlesstcg.com/cards/jp/M6/57",
@@ -2514,7 +2514,7 @@
     "value": "-30"
    },
    "retreat": 2,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005058",
     "jp": "https://limitlesstcg.com/cards/jp/M6/58",
@@ -2559,7 +2559,7 @@
     "value": "-30"
    },
    "retreat": 1,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005059",
     "jp": "https://limitlesstcg.com/cards/jp/M6/59",
@@ -2599,7 +2599,7 @@
     "value": "-30"
    },
    "retreat": 1,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005060",
     "jp": "https://limitlesstcg.com/cards/jp/M6/60",
@@ -2640,7 +2640,7 @@
     "value": "-30"
    },
    "retreat": 0,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005061",
     "jp": "https://limitlesstcg.com/cards/jp/M6/61",
@@ -2684,7 +2684,7 @@
     "value": "-30"
    },
    "retreat": 0,
-   "implemented": false,
+   "implemented": true,
    "source": {
     "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005062",
     "jp": "https://limitlesstcg.com/cards/jp/M6/62",

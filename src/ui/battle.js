@@ -19,8 +19,13 @@ const SEARCH = {
   basicPokemon: pd => `덱에서 기본 포켓몬을 ${pd.max}장까지 골라 벤치로`,
   basicEnergy: pd => `덱에서 기본 에너지를 ${pd.max}장까지 골라 패로`,
   energy: () => '덱에서 에너지를 1장 골라 이 포켓몬에게 붙이세요',
+  pokemon: () => '덱에서 포켓몬을 1장 고르세요',
+  any: pd => `덱에서 원하는 카드를 ${pd.max}장까지 고르세요`,
+  evolvesFrom: () => '덱에서 진화 카드를 골라 진화시키세요',
 };
-const FX = { noAttack: '기술 불가', noRetreat: '후퇴 불가', protect: '보호 중' };
+const FX = { noAttack: '기술 불가', noRetreat: '후퇴 불가', protect: '보호 중', noDamage: '데미지 안 받음', noDamageFromBasic: '기본 포켓몬 데미지 안 받음', reduce30: '받는 데미지 −30' };
+const DONE = { deltaGift: '붙이지 않음', deepSea: '되돌리지 않음', roarAsk: '사용하지 않음', roar: '붙이지 않음', chargeBench: '붙이지 않음', drawTo6: '뽑지 않음', lure: '그만 고르기', scaleBeat: '그만 붙이기' };
+const OPP_TARGET = ['catch', 'snipe', 'counters', 'dragOut'];
 const PROMPT = {
   setupActive: () => '배틀 포켓몬으로 낼 기본 포켓몬을 고르세요',
   setupBench: () => '벤치에 낼 기본 포켓몬을 고르세요 (다 냈으면 완료)',
@@ -32,7 +37,17 @@ const PROMPT = {
   switchOwn: () => '배틀 포켓몬과 바꿀 벤치 포켓몬을 고르세요',
   moveEnergy: () => '새 배틀 포켓몬에게 옮길 에너지를 고르세요',
   catch: () => '상대의 배틀 포켓몬과 바꿀 상대 벤치 포켓몬을 고르세요',
-  snipe: pd => `${pd.amount} 데미지를 줄 상대 포켓몬을 고르세요 (벤치는 약점·저항력 없음)`,
+  snipe: pd => `${pd.amount} 데미지를 줄 상대 ${pd.benchOnly ? '벤치 ' : ''}포켓몬을 고르세요 (벤치는 약점·저항력 없음)`,
+  lure: () => '상대 덱 위 5장 중 상대 벤치로 보낼 기본 포켓몬을 고르세요',
+  counters: pd => `데미지 카운터 ${pd.amount / 10}개를 올릴 상대 포켓몬을 고르세요`,
+  dragOut: () => '배틀로 끌어낼 상대 벤치 포켓몬을 고르세요 (나오면 40 데미지)',
+  chargeBench: () => '덱에서 벤치 포켓몬에게 붙일 에너지와 포켓몬을 고르세요',
+  selfSwitch: () => '배틀 포켓몬과 바꿀 벤치 포켓몬을 고르세요',
+  colorful: () => '패의 포켓몬을 보여줄 타입 수를 고르세요 (타입 1개당 30)',
+  drawTo6: () => '패가 6장이 되도록 뽑을까요?',
+  scaleBeat: () => '스케일 비트: 덱 위 6장의 기본 에너지를 (드래곤) 포켓몬에게 붙이세요',
+  roarAsk: () => '메가레쿠쟈 ex의 특성 「패왕의 포효」를 사용할까요?',
+  roar: () => '패왕의 포효: 덱 위 4장 중 이 포켓몬에게 붙일 기본 에너지를 고르세요',
   forcedSwitch: () => '상대 기술로 배틀 포켓몬을 바꿉니다. 새 배틀 포켓몬을 고르세요',
   oppEnergy: () => '트래쉬할 상대 배틀 포켓몬의 에너지를 고르세요',
   ownEnergy: pd => `트래쉬할 에너지 ${pd.count}개를 고르세요`,
@@ -64,14 +79,18 @@ function label(db, v, a) {
     case 'retreat': return `후퇴 → ${spot(db, P, a.to)} (트래쉬: ${a.discard.map(id => db.get(id).energyType).join('·') || '없음'})`;
     case 'attack': { const atk = attacksOf(P.active, db)[a.index]; return `${atk.name} ${atk.damage ?? ''}`; }
     case 'ability': return `특성 「${db.get(topId(a.to === -1 ? P.active : P.bench[a.to])).ability.name}」 사용`;
+    case 'handAbility': return `특성 「${db.get(a.id).ability.name}」 사용 (벤치로)`;
     case 'end': return '차례 끝';
-    case 'done': return { deltaGift: '붙이지 않음', deepSea: '되돌리지 않음' }[kind] ?? '완료';
+    case 'done': return DONE[kind] ?? '완료';
     case 'choose':
+      if (a.use) return '사용하기';
       if (a.ids) return a.ids.length ? `트래쉬: ${a.ids.map(id => db.get(id).energyType ?? db.get(id).name).join('·')} (${a.ids.length}장)` : '트래쉬하지 않음';
       if (a.id && a.to !== undefined) return `${db.get(a.id).name} → ${spot(db, P, a.to)}`;
       if (a.id) return kind === 'deepSea' ? `덱 아래로: ${db.get(a.id).name}` : db.get(a.id).name;
+      if (kind === 'colorful') return `타입 ${a.n}개 보여주기 (${a.n * 30} 데미지)`;
+      if (kind === 'drawTo6') return `${a.n}장 뽑기`;
       if (a.n !== undefined) return `${a.n}장`;
-      return ['catch', 'snipe'].includes(kind) ? `상대 ${spot(db, v.players[CPU], a.to)}` : spot(db, P, a.to);
+      return OPP_TARGET.includes(kind) ? `상대 ${spot(db, v.players[CPU], a.to)}` : spot(db, P, a.to);
   }
 }
 
