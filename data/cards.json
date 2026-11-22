@@ -1,0 +1,3359 @@
+{
+ "_meta": {
+  "set": "MEGA 확장팩 「스톰에메랄다」(M6) 기본 001~076 + 「스톰에메랄다」 실드전 참가상 가이·포켓패드 + 시크릿 칸 전용 4장(098 포켓몬 캐처, 104~106 특수 에너지)",
+  "collected": "2026-11-22",
+  "sources": "pokemoncard.co.kr 카드 상세(한글 원문, 1순위) / limitlesstcg.com 일본판·영문판(일본어·영어 이름, 진화 전)",
+  "note": "한국판과 일본판은 063~076 번호 순서가 다르다. no=한국 번호, noJP=일본 번호.",
+  "variantsNote": "variants = 팩에서 나오는 077~113번. baseNo 카드와 이름·효과가 같다(한국 공식 원문 대조). 098·104·105·106은 기본 76장에 없어 cards에 따로 넣었다."
+ },
+ "cards": [
+  {
+   "no": "001/076",
+   "name": "헤라크로스",
+   "nameJP": "ヘラクロス",
+   "nameEN": "Heracross",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "풀",
+   "hp": 130,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "스파이크드로",
+     "cost": [
+      "풀"
+     ],
+     "damage": "20",
+     "text": "자신의 덱을 2장 뽑는다."
+    },
+    {
+     "name": "10만마력",
+     "cost": [
+      "풀",
+      "풀",
+      "무색"
+     ],
+     "damage": "130",
+     "text": "이 포켓몬에게도 30데미지를 준다."
+    }
+   ],
+   "weakness": {
+    "type": "불꽃",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 3,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005001",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/1",
+    "en": "https://limitlesstcg.com/cards/en/DLR/1"
+   },
+   "noJP": "M6 1"
+  },
+  {
+   "no": "002/076",
+   "name": "비구술",
+   "nameJP": "アメタマ",
+   "nameEN": "Surskit",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "풀",
+   "hp": 50,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "증식하기",
+     "cost": [
+      "무색"
+     ],
+     "damage": null,
+     "text": "자신의 덱에서 「비구술」을 2장까지 선택해서 벤치로 내보낸다. 그리고 덱을 섞는다."
+    },
+    {
+     "name": "벌레먹기",
+     "cost": [
+      "풀"
+     ],
+     "damage": "10",
+     "text": ""
+    }
+   ],
+   "weakness": {
+    "type": "불꽃",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 1,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005002",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/2",
+    "en": "https://limitlesstcg.com/cards/en/DLR/2"
+   },
+   "noJP": "M6 2"
+  },
+  {
+   "no": "003/076",
+   "name": "비나방",
+   "nameJP": "アメモース",
+   "nameEN": "Masquerain",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "1진화",
+   "evolvesFrom": "비구술",
+   "rule": null,
+   "type": "풀",
+   "hp": 110,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "무서운모양",
+     "cost": [
+      "무색"
+     ],
+     "damage": "30",
+     "text": "상대의 다음 차례에 이 기술을 받은 포켓몬은 기술을 사용할 수 없다."
+    },
+    {
+     "name": "버그패닉",
+     "cost": [
+      "풀"
+     ],
+     "damage": "50×",
+     "text": "자신의 덱을 아래에서부터 7장 앞면으로 해서 그 중에 있는 기술 「버그패닉」을 가진 포켓몬의 장수 × 50데미지를 준다. 앞면으로 한 포켓몬은 덱으로 되돌리고 섞는다. 남은 카드는 트래쉬한다."
+    }
+   ],
+   "weakness": {
+    "type": "불꽃",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 1,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005003",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/3",
+    "en": "https://limitlesstcg.com/cards/en/MEP/111"
+   },
+   "noJP": "M6 3"
+  },
+  {
+   "no": "004/076",
+   "name": "선인왕",
+   "nameJP": "サボネア",
+   "nameEN": "Cacnea",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "풀",
+   "hp": 70,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "띄워날리기",
+     "cost": [
+      "무색"
+     ],
+     "damage": "10+",
+     "text": "동전을 1번 던져서 앞면이 나오면 10데미지를 추가한다."
+    }
+   ],
+   "weakness": {
+    "type": "불꽃",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 2,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005004",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/4",
+    "en": "https://limitlesstcg.com/cards/en/DLR/4"
+   },
+   "noJP": "M6 4"
+  },
+  {
+   "no": "005/076",
+   "name": "밤선인",
+   "nameJP": "ノクタス",
+   "nameEN": "Cacturne",
+   "rarity": "R",
+   "category": "포켓몬",
+   "stage": "1진화",
+   "evolvesFrom": "선인왕",
+   "rule": null,
+   "type": "풀",
+   "hp": 130,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "직격탄",
+     "cost": [
+      "무색"
+     ],
+     "damage": null,
+     "text": "상대의 포켓몬 1마리에게 30데미지를 준다. (벤치는 약점, 저항력 계산을 하지 않는다.)"
+    },
+    {
+     "name": "퍼니시니들",
+     "cost": [
+      "풀"
+     ],
+     "damage": "10+",
+     "text": "상대 필드의 특성을 가진 포켓몬의 수 × 50데미지를 추가한다."
+    }
+   ],
+   "weakness": {
+    "type": "불꽃",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 2,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005005",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/5",
+    "en": "https://limitlesstcg.com/cards/en/DLR/5"
+   },
+   "noJP": "M6 5"
+  },
+  {
+   "no": "006/076",
+   "name": "세꿀버리",
+   "nameJP": "ミツハニー",
+   "nameEN": "Combee",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "풀",
+   "hp": 50,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "휙사라지기",
+     "cost": [
+      "풀"
+     ],
+     "damage": "10",
+     "text": "이 포켓몬과 붙어 있는 모든 카드를 패로 되돌린다."
+    },
+    {
+     "name": "버그패닉",
+     "cost": [
+      "무색",
+      "무색",
+      "무색"
+     ],
+     "damage": "50×",
+     "text": "자신의 덱을 아래에서부터 7장 앞면으로 해서 그 중에 있는 기술 「버그패닉」을 가진 포켓몬의 장수 × 50데미지를 준다. 앞면으로 한 포켓몬은 덱으로 되돌리고 섞는다. 남은 카드는 트래쉬한다."
+    }
+   ],
+   "weakness": {
+    "type": "불꽃",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 1,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005006",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/6",
+    "en": "https://limitlesstcg.com/cards/en/DLR/6"
+   },
+   "noJP": "M6 6"
+  },
+  {
+   "no": "007/076",
+   "name": "비퀸",
+   "nameJP": "ビークイン",
+   "nameEN": "Vespiquen",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "1진화",
+   "evolvesFrom": "세꿀버리",
+   "rule": null,
+   "type": "풀",
+   "hp": 120,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "궤찌르기",
+     "cost": [
+      "풀"
+     ],
+     "damage": "40",
+     "text": ""
+    },
+    {
+     "name": "클린히트",
+     "cost": [
+      "무색",
+      "무색",
+      "무색"
+     ],
+     "damage": "80+",
+     "text": "상대의 배틀 포켓몬이 진화 포켓몬이라면 80데미지를 추가한다."
+    }
+   ],
+   "weakness": {
+    "type": "불꽃",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 1,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005007",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/7",
+    "en": "https://limitlesstcg.com/cards/en/DLR/7"
+   },
+   "noJP": "M6 7"
+  },
+  {
+   "no": "008/076",
+   "name": "꼬시레",
+   "nameJP": "コソクムシ",
+   "nameEN": "Wimpod",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "풀",
+   "hp": 70,
+   "ability": {
+    "name": "저자세",
+    "text": "상대의 필드에 「포켓몬 [ex]」가 있다면 이 포켓몬은 후퇴에 필요한 에너지가 모두 없어진다."
+   },
+   "attacks": [
+    {
+     "name": "부딪치기",
+     "cost": [
+      "풀"
+     ],
+     "damage": "10",
+     "text": ""
+    }
+   ],
+   "weakness": {
+    "type": "불꽃",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 3,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005008",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/8",
+    "en": "https://limitlesstcg.com/cards/en/DLR/10"
+   },
+   "noJP": "M6 8"
+  },
+  {
+   "no": "009/076",
+   "name": "메가갑주무사 ex",
+   "nameJP": "メガグソクムシャex",
+   "nameEN": "Mega Golisopod ex",
+   "rarity": "RR",
+   "category": "포켓몬",
+   "stage": "1진화",
+   "evolvesFrom": "꼬시레",
+   "rule": "메가진화 ex",
+   "type": "풀",
+   "hp": 340,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "마무리하기",
+     "cost": [
+      "풀"
+     ],
+     "damage": "60+",
+     "text": "상대의 배틀 포켓몬에게 데미지 카운터가 올려져 있다면 160데미지를 추가한다."
+    },
+    {
+     "name": "콰트로홀드",
+     "cost": [
+      "무색",
+      "무색",
+      "무색"
+     ],
+     "damage": "160",
+     "text": "상대의 다음 차례에 이 기술을 받은 포켓몬은 후퇴할 수 없다."
+    }
+   ],
+   "weakness": {
+    "type": "불꽃",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 3,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005009",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/9",
+    "en": "https://limitlesstcg.com/cards/en/DLR/11"
+   },
+   "noJP": "M6 9"
+  },
+  {
+   "no": "010/076",
+   "name": "가디",
+   "nameJP": "ガーディ",
+   "nameEN": "Growlithe",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "불꽃",
+   "hp": 80,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "울부짖기",
+     "cost": [
+      "무색"
+     ],
+     "damage": null,
+     "text": "상대의 배틀 포켓몬을 벤치 포켓몬과 교체한다. (배틀필드로 내보낼 포켓몬은 상대가 선택한다.)"
+    },
+    {
+     "name": "뒤로 차기",
+     "cost": [
+      "불꽃",
+      "무색",
+      "무색"
+     ],
+     "damage": "50",
+     "text": ""
+    }
+   ],
+   "weakness": {
+    "type": "물",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 2,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005010",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/10",
+    "en": "https://limitlesstcg.com/cards/en/DLR/18"
+   },
+   "noJP": "M6 10"
+  },
+  {
+   "no": "011/076",
+   "name": "윈디",
+   "nameJP": "ウインディ",
+   "nameEN": "Arcanine",
+   "rarity": "R",
+   "category": "포켓몬",
+   "stage": "1진화",
+   "evolvesFrom": "가디",
+   "rule": null,
+   "type": "불꽃",
+   "hp": 150,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "의욕팽",
+     "cost": [
+      "불꽃",
+      "무색",
+      "무색"
+     ],
+     "damage": "90+",
+     "text": "상대의 남은 프라이즈 장수가 4장 이하라면 90데미지를 추가한다."
+    },
+    {
+     "name": "히트태클",
+     "cost": [
+      "불꽃",
+      "불꽃",
+      "무색",
+      "무색"
+     ],
+     "damage": "200",
+     "text": "이 포켓몬에게도 50데미지를 준다."
+    }
+   ],
+   "weakness": {
+    "type": "물",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 4,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005011",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/11",
+    "en": "https://limitlesstcg.com/cards/en/DLR/19"
+   },
+   "noJP": "M6 11"
+  },
+  {
+   "no": "012/076",
+   "name": "마그마",
+   "nameJP": "ブーバー",
+   "nameEN": "Magmar",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "불꽃",
+   "hp": 90,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "힘모으기",
+     "cost": [
+      "무색"
+     ],
+     "damage": null,
+     "text": "자신의 덱에서 기본 에너지를 2장까지 선택해서 상대에게 보여주고 패로 가져온다. 그리고 덱을 섞는다."
+    },
+    {
+     "name": "화염",
+     "cost": [
+      "불꽃",
+      "무색"
+     ],
+     "damage": "30",
+     "text": ""
+    }
+   ],
+   "weakness": {
+    "type": "물",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 2,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005012",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/12",
+    "en": "https://limitlesstcg.com/cards/en/DLR/20"
+   },
+   "noJP": "M6 12"
+  },
+  {
+   "no": "013/076",
+   "name": "마그마번",
+   "nameJP": "ブーバーン",
+   "nameEN": "Magmortar",
+   "rarity": "U",
+   "category": "포켓몬",
+   "stage": "1진화",
+   "evolvesFrom": "마그마",
+   "rule": null,
+   "type": "불꽃",
+   "hp": 140,
+   "ability": {
+    "name": "버디 부스트",
+    "text": "자신의 차례에 1번 사용할 수 있다. 자신의 패에서 「기본 (불꽃) 에너지」와 「기본 (번개) 에너지」를 각각 1장까지 선택해서 자신의 「에레키블」 또는 「마그마번」에게 원하는 대로 붙인다."
+   },
+   "attacks": [
+    {
+     "name": "히트스탬프",
+     "cost": [
+      "불꽃",
+      "불꽃",
+      "무색"
+     ],
+     "damage": "80",
+     "text": ""
+    }
+   ],
+   "weakness": {
+    "type": "물",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 3,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005013",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/13",
+    "en": "https://limitlesstcg.com/cards/en/MEP/112"
+   },
+   "noJP": "M6 13"
+  },
+  {
+   "no": "014/076",
+   "name": "코터스",
+   "nameJP": "コータス",
+   "nameEN": "Torkoal",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "불꽃",
+   "hp": 130,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "태워그을리기",
+     "cost": [
+      "불꽃",
+      "무색"
+     ],
+     "damage": "30",
+     "text": "상대의 배틀 포켓몬을 화상으로 만든다."
+    },
+    {
+     "name": "화염폭",
+     "cost": [
+      "불꽃",
+      "불꽃",
+      "무색"
+     ],
+     "damage": "120",
+     "text": "자신의 다음 차례에 이 포켓몬은 「화염폭」을 사용할 수 없다."
+    }
+   ],
+   "weakness": {
+    "type": "물",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 3,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005014",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/14",
+    "en": "https://limitlesstcg.com/cards/en/DLR/22"
+   },
+   "noJP": "M6 14"
+  },
+  {
+   "no": "015/076",
+   "name": "히트로토무 ex",
+   "nameJP": "ヒートロトムex",
+   "nameEN": "Heat Rotom ex",
+   "rarity": "RR",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": "포켓몬 ex",
+   "type": "불꽃",
+   "hp": 190,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "재가열",
+     "cost": [
+      "무색",
+      "무색"
+     ],
+     "damage": "30×",
+     "text": "자신의 트래쉬에 있는 「기본 (불꽃) 에너지」를 모두 상대에게 보여주고 그 장수 × 30데미지를 준다. 그 뒤, 보여준 에너지를 덱으로 되돌리고 섞는다."
+    },
+    {
+     "name": "스트롱플레어",
+     "cost": [
+      "불꽃",
+      "불꽃",
+      "무색"
+     ],
+     "damage": "170",
+     "text": "이 포켓몬에게 붙어 있는 에너지를 2개 선택해서 트래쉬한다."
+    }
+   ],
+   "weakness": {
+    "type": "물",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 1,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005015",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/15",
+    "en": "https://limitlesstcg.com/cards/en/DLR/23"
+   },
+   "noJP": "M6 15"
+  },
+  {
+   "no": "016/076",
+   "name": "앤티골",
+   "nameJP": "クイタラン",
+   "nameEN": "Heatmor",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "불꽃",
+   "hp": 110,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "파괴불",
+     "cost": [
+      "불꽃"
+     ],
+     "damage": "30",
+     "text": "동전을 1번 던져서 앞면이 나오면 상대의 배틀 포켓몬에게 붙어 있는 에너지를 1개 선택해서 트래쉬한다."
+    }
+   ],
+   "weakness": {
+    "type": "물",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 1,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005016",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/16",
+    "en": "https://limitlesstcg.com/cards/en/DLR/24"
+   },
+   "noJP": "M6 16"
+  },
+  {
+   "no": "017/076",
+   "name": "만타인",
+   "nameJP": "マンタイン",
+   "nameEN": "Mantine",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "물",
+   "hp": 110,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "파도일으키기",
+     "cost": [
+      "무색"
+     ],
+     "damage": null,
+     "text": "서로의 플레이어는 각각 패를 모두 덱으로 되돌리고 섞는다. 그 뒤, 각각 덱을 4장 뽑는다."
+    },
+    {
+     "name": "버블드레인",
+     "cost": [
+      "물",
+      "무색"
+     ],
+     "damage": "30",
+     "text": "이 포켓몬의 HP를 「30」회복한다."
+    }
+   ],
+   "weakness": {
+    "type": "번개",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 1,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005017",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/17",
+    "en": "https://limitlesstcg.com/cards/en/DLR/25"
+   },
+   "noJP": "M6 17"
+  },
+  {
+   "no": "018/076",
+   "name": "가이오가",
+   "nameJP": "カイオーガ",
+   "nameEN": "Kyogre",
+   "rarity": "R",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "물",
+   "hp": 150,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "폭포오르기",
+     "cost": [
+      "물",
+      "무색"
+     ],
+     "damage": "40",
+     "text": ""
+    },
+    {
+     "name": "거친회오리",
+     "cost": [
+      "물",
+      "물",
+      "무색"
+     ],
+     "damage": "100",
+     "text": "이름에 「전설」이 적힌 스타디움이 필드에 나와 있다면 상대의 벤치 포켓몬 전원에게도 각각 50데미지를 준다. (벤치는 약점, 저항력 계산을 하지 않는다.)"
+    }
+   ],
+   "weakness": {
+    "type": "번개",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 3,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005018",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/18",
+    "en": "https://limitlesstcg.com/cards/en/MEP/117"
+   },
+   "noJP": "M6 18"
+  },
+  {
+   "no": "019/076",
+   "name": "탱그릴",
+   "nameJP": "プルリル",
+   "nameEN": "Frillish",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "물",
+   "hp": 80,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "걸기",
+     "cost": [
+      "무색"
+     ],
+     "damage": "10",
+     "text": ""
+    }
+   ],
+   "weakness": {
+    "type": "번개",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 2,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005019",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/19",
+    "en": "https://limitlesstcg.com/cards/en/DLR/27"
+   },
+   "noJP": "M6 19"
+  },
+  {
+   "no": "020/076",
+   "name": "탱탱겔",
+   "nameJP": "ブルンゲル",
+   "nameEN": "Jellicent",
+   "rarity": "U",
+   "category": "포켓몬",
+   "stage": "1진화",
+   "evolvesFrom": "탱그릴",
+   "rule": null,
+   "type": "물",
+   "hp": 120,
+   "ability": {
+    "name": "심해 드로",
+    "text": "자신의 차례에 1번 사용할 수 있다. 자신의 덱을 1장 뽑는다. 그 뒤, 원한다면 자신의 패를 1장 선택해서 덱의 아래로 되돌린다."
+   },
+   "attacks": [
+    {
+     "name": "세게때리기",
+     "cost": [
+      "물",
+      "무색",
+      "무색"
+     ],
+     "damage": "100",
+     "text": ""
+    }
+   ],
+   "weakness": {
+    "type": "번개",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 2,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005020",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/20",
+    "en": "https://limitlesstcg.com/cards/en/DLR/28"
+   },
+   "noJP": "M6 20"
+  },
+  {
+   "no": "021/076",
+   "name": "약어리 ex",
+   "nameJP": "ヨワシex",
+   "nameEN": "Wishiwashi ex",
+   "rarity": "RR",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": "포켓몬 ex",
+   "type": "물",
+   "hp": 260,
+   "ability": {
+    "name": "오션 게인",
+    "text": "이 포켓몬이 배틀필드에 있다면 자신의 차례에 1번 사용할 수 있다. 이 포켓몬의 HP를 「50」회복한다."
+   },
+   "attacks": [
+    {
+     "name": "하이드로 스플래시",
+     "cost": [
+      "물",
+      "물",
+      "물",
+      "무색"
+     ],
+     "damage": "220",
+     "text": ""
+    }
+   ],
+   "weakness": {
+    "type": "번개",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 3,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005021",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/21",
+    "en": "https://limitlesstcg.com/cards/en/DLR/29"
+   },
+   "noJP": "M6 21"
+  },
+  {
+   "no": "022/076",
+   "name": "에레브",
+   "nameJP": "エレブー",
+   "nameEN": "Electabuzz",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "번개",
+   "hp": 90,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "동료부르기",
+     "cost": [
+      "무색"
+     ],
+     "damage": null,
+     "text": "자신의 덱에서 기본 포켓몬을 2장까지 선택해서 벤치로 내보낸다. 그리고 덱을 섞는다."
+    },
+    {
+     "name": "박치기",
+     "cost": [
+      "번개",
+      "번개",
+      "무색"
+     ],
+     "damage": "60",
+     "text": ""
+    }
+   ],
+   "weakness": {
+    "type": "격투",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 2,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005022",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/22",
+    "en": "https://limitlesstcg.com/cards/en/DLR/30"
+   },
+   "noJP": "M6 22"
+  },
+  {
+   "no": "023/076",
+   "name": "에레키블",
+   "nameJP": "エレキブル",
+   "nameEN": "Electivire",
+   "rarity": "U",
+   "category": "포켓몬",
+   "stage": "1진화",
+   "evolvesFrom": "에레브",
+   "rule": null,
+   "type": "번개",
+   "hp": 140,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "누르기",
+     "cost": [
+      "무색",
+      "무색"
+     ],
+     "damage": "30",
+     "text": "동전을 1번 던져서 앞면이 나오면 상대의 배틀 포켓몬을 마비로 만든다."
+    },
+    {
+     "name": "볼티지해머",
+     "cost": [
+      "번개",
+      "번개",
+      "무색",
+      "무색"
+     ],
+     "damage": "60×",
+     "text": "이 포켓몬에게 붙어 있는 기본 에너지를 원하는 만큼 트래쉬하고 그 장수 × 60데미지를 준다."
+    }
+   ],
+   "weakness": {
+    "type": "격투",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 3,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005023",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/23",
+    "en": "https://limitlesstcg.com/cards/en/DLR/31"
+   },
+   "noJP": "M6 23"
+  },
+  {
+   "no": "024/076",
+   "name": "라이코 ex",
+   "nameJP": "ライコウex",
+   "nameEN": "Raikou ex",
+   "rarity": "RR",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": "포켓몬 ex",
+   "type": "번개",
+   "hp": 200,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "우레두르기",
+     "cost": [
+      "번개"
+     ],
+     "damage": null,
+     "text": "이 기술은 선공 플레이어의 첫 차례라도 사용할 수 있다. 자신의 덱에서 에너지를 1장 선택해서 이 포켓몬에게 붙인다. 그리고 덱을 섞는다."
+    },
+    {
+     "name": "파워러시",
+     "cost": [
+      "번개",
+      "번개",
+      "무색"
+     ],
+     "damage": "200",
+     "text": "동전을 1번 던져서 뒷면이 나오면 자신의 다음 차례에 이 포켓몬은 기술을 사용할 수 없다."
+    }
+   ],
+   "weakness": {
+    "type": "격투",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 0,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005024",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/24",
+    "en": "https://limitlesstcg.com/cards/en/DLR/33"
+   },
+   "noJP": "M6 24"
+  },
+  {
+   "no": "025/076",
+   "name": "볼트로스",
+   "nameJP": "ボルトロス",
+   "nameEN": "Thundurus",
+   "rarity": "U",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "번개",
+   "hp": 120,
+   "ability": {
+    "name": "화신 단결",
+    "text": "자신의 필드에 「토네로스」「볼트로스」「랜드로스」「러브로스」가 있다면 이 포켓몬은 기술을 사용하기 위한 (무색) 에너지가 모두 없어진다."
+   },
+   "attacks": [
+    {
+     "name": "썬더에지",
+     "cost": [
+      "번개",
+      "무색",
+      "무색"
+     ],
+     "damage": "90",
+     "text": "이 기술의 데미지는 상대의 배틀 포켓몬에게 걸려 있는 효과를 계산하지 않는다."
+    }
+   ],
+   "weakness": {
+    "type": "격투",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 1,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005025",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/25",
+    "en": "https://limitlesstcg.com/cards/en/DLR/35"
+   },
+   "noJP": "M6 25"
+  },
+  {
+   "no": "026/076",
+   "name": "찌르성게",
+   "nameJP": "バチンウニ",
+   "nameEN": "Pincurchin",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "번개",
+   "hp": 80,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "에너지크래시",
+     "cost": [
+      "무색",
+      "무색"
+     ],
+     "damage": "20×",
+     "text": "상대의 포켓몬 전원에게 붙어 있는 에너지의 개수 × 20데미지를 준다."
+    }
+   ],
+   "weakness": {
+    "type": "격투",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 1,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005026",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/26",
+    "en": "https://limitlesstcg.com/cards/en/DLR/36"
+   },
+   "noJP": "M6 26"
+  },
+  {
+   "no": "027/076",
+   "name": "찌리비",
+   "nameJP": "カイデン",
+   "nameEN": "Wattrel",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "번개",
+   "hp": 60,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "고속이동",
+     "cost": [
+      "번개"
+     ],
+     "damage": "10",
+     "text": "동전을 1번 던져서 앞면이 나오면 상대의 다음 차례에 이 포켓몬은 기술의 데미지나 효과를 받지 않는다."
+    }
+   ],
+   "weakness": {
+    "type": "번개",
+    "value": "×2"
+   },
+   "resistance": {
+    "type": "격투",
+    "value": "-30"
+   },
+   "retreat": 1,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005027",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/27",
+    "en": "https://limitlesstcg.com/cards/en/DLR/40"
+   },
+   "noJP": "M6 27"
+  },
+  {
+   "no": "028/076",
+   "name": "찌리비크",
+   "nameJP": "タイカイデン",
+   "nameEN": "Kilowattrel",
+   "rarity": "U",
+   "category": "포켓몬",
+   "stage": "1진화",
+   "evolvesFrom": "찌리비",
+   "rule": null,
+   "type": "번개",
+   "hp": 120,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "습격",
+     "cost": [
+      "번개"
+     ],
+     "damage": "30+",
+     "text": "이 차례에 이 포켓몬이 「찌리비」에서 진화했다면 90데미지를 추가한다."
+    },
+    {
+     "name": "스피드비행",
+     "cost": [
+      "번개",
+      "무색"
+     ],
+     "damage": "70",
+     "text": ""
+    }
+   ],
+   "weakness": {
+    "type": "번개",
+    "value": "×2"
+   },
+   "resistance": {
+    "type": "격투",
+    "value": "-30"
+   },
+   "retreat": 1,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005028",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/28",
+    "en": "https://limitlesstcg.com/cards/en/DLR/41"
+   },
+   "noJP": "M6 28"
+  },
+  {
+   "no": "029/076",
+   "name": "슬리프",
+   "nameJP": "スリープ",
+   "nameEN": "Drowzee",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "초",
+   "hp": 80,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "막치기",
+     "cost": [
+      "초"
+     ],
+     "damage": "20",
+     "text": ""
+    }
+   ],
+   "weakness": {
+    "type": "악",
+    "value": "×2"
+   },
+   "resistance": {
+    "type": "격투",
+    "value": "-30"
+   },
+   "retreat": 2,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005029",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/29",
+    "en": "https://limitlesstcg.com/cards/en/DLR/43"
+   },
+   "noJP": "M6 29"
+  },
+  {
+   "no": "030/076",
+   "name": "슬리퍼",
+   "nameJP": "スリーパー",
+   "nameEN": "Hypno",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "1진화",
+   "evolvesFrom": "슬리프",
+   "rule": null,
+   "type": "초",
+   "hp": 120,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "마인드룰러",
+     "cost": [
+      "초"
+     ],
+     "damage": "20×",
+     "text": "상대의 패의 장수 × 20데미지를 준다."
+    },
+    {
+     "name": "최면파동",
+     "cost": [
+      "초",
+      "무색"
+     ],
+     "damage": "50",
+     "text": "상대의 배틀 포켓몬을 잠듦으로 만든다."
+    }
+   ],
+   "weakness": {
+    "type": "악",
+    "value": "×2"
+   },
+   "resistance": {
+    "type": "격투",
+    "value": "-30"
+   },
+   "retreat": 2,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005030",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/30",
+    "en": "https://limitlesstcg.com/cards/en/DLR/44"
+   },
+   "noJP": "M6 30"
+  },
+  {
+   "no": "031/076",
+   "name": "기라티나",
+   "nameJP": "ギラティナ",
+   "nameEN": "Giratina",
+   "rarity": "R",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "초",
+   "hp": 130,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "카오스크롤러",
+     "cost": [
+      "초",
+      "초",
+      "무색"
+     ],
+     "damage": "120",
+     "text": "상대의 다음 차례에 이 포켓몬은 기술의 데미지를 받지 않는다. 자신의 이전 차례에 자신의 포켓몬이 「카오스크롤러」를 사용했다면 이 기술은 사용할 수 없다."
+    }
+   ],
+   "weakness": {
+    "type": "악",
+    "value": "×2"
+   },
+   "resistance": {
+    "type": "격투",
+    "value": "-30"
+   },
+   "retreat": 3,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005031",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/31",
+    "en": "https://limitlesstcg.com/cards/en/DLR/45"
+   },
+   "noJP": "M6 31"
+  },
+  {
+   "no": "032/076",
+   "name": "골비람",
+   "nameJP": "ゴビット",
+   "nameEN": "Golett",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "초",
+   "hp": 90,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "치기",
+     "cost": [
+      "초",
+      "초"
+     ],
+     "damage": "50",
+     "text": ""
+    }
+   ],
+   "weakness": {
+    "type": "악",
+    "value": "×2"
+   },
+   "resistance": {
+    "type": "격투",
+    "value": "-30"
+   },
+   "retreat": 3,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005032",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/32",
+    "en": "https://limitlesstcg.com/cards/en/DLR/46"
+   },
+   "noJP": "M6 32"
+  },
+  {
+   "no": "033/076",
+   "name": "메가골루그 ex",
+   "nameJP": "メガゴルーグex",
+   "nameEN": "Mega Golurk ex",
+   "rarity": "RR",
+   "category": "포켓몬",
+   "stage": "1진화",
+   "evolvesFrom": "골비람",
+   "rule": "메가진화 ex",
+   "type": "초",
+   "hp": 350,
+   "ability": {
+    "name": "기동 제한",
+    "text": "자신의 패가 10장 이상일 때만 이 포켓몬은 기술을 사용할 수 있다."
+   },
+   "attacks": [
+    {
+     "name": "골리앗펀치",
+     "cost": [
+      "초",
+      "초"
+     ],
+     "damage": "300",
+     "text": "이 포켓몬에게도 30데미지를 준다."
+    }
+   ],
+   "weakness": {
+    "type": "악",
+    "value": "×2"
+   },
+   "resistance": {
+    "type": "격투",
+    "value": "-30"
+   },
+   "retreat": 3,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005033",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/33",
+    "en": "https://limitlesstcg.com/cards/en/DLR/47"
+   },
+   "noJP": "M6 33"
+  },
+  {
+   "no": "034/076",
+   "name": "러브로스",
+   "nameJP": "ラブトロス",
+   "nameEN": "Enamorus",
+   "rarity": "U",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "초",
+   "hp": 120,
+   "ability": {
+    "name": "화신 단결",
+    "text": "자신의 필드에 「토네로스」「볼트로스」「랜드로스」「러브로스」가 있다면 이 포켓몬은 기술을 사용하기 위한 (무색) 에너지가 모두 없어진다."
+   },
+   "attacks": [
+    {
+     "name": "라이징하트",
+     "cost": [
+      "초",
+      "초",
+      "무색",
+      "무색"
+     ],
+     "damage": "100+",
+     "text": "상대의 배틀 포켓몬이 「포켓몬 [ex]」라면 100데미지를 추가한다."
+    }
+   ],
+   "weakness": {
+    "type": "강철",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 1,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005034",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/34",
+    "en": "https://limitlesstcg.com/cards/en/MEP/113"
+   },
+   "noJP": "M6 34"
+  },
+  {
+   "no": "035/076",
+   "name": "모래두지",
+   "nameJP": "サンド",
+   "nameEN": "Sandshrew",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "격투",
+   "hp": 60,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "각성",
+     "cost": [
+      "격투"
+     ],
+     "damage": null,
+     "text": "이 포켓몬에서 진화하는 카드를 자신의 덱에서 1장 선택해서 이 포켓몬에게 올려서 진화시킨다. 그리고 덱을 섞는다."
+    }
+   ],
+   "weakness": {
+    "type": "풀",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 1,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005035",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/35",
+    "en": "https://limitlesstcg.com/cards/en/DLR/49"
+   },
+   "noJP": "M6 35"
+  },
+  {
+   "no": "036/076",
+   "name": "고지",
+   "nameJP": "サンドパン",
+   "nameEN": "Sandslash",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "1진화",
+   "evolvesFrom": "모래두지",
+   "rule": null,
+   "type": "격투",
+   "hp": 110,
+   "ability": {
+    "name": "반격가시",
+    "text": "이 포켓몬이 배틀필드에서 상대의 포켓몬으로부터 기술의 데미지를 받았을 때 기술을 사용한 포켓몬에게 데미지 카운터를 3개 올린다."
+   },
+   "attacks": [
+    {
+     "name": "구멍파기클로",
+     "cost": [
+      "격투"
+     ],
+     "damage": "60",
+     "text": "상대의 덱을 위에서부터 1장 트래쉬한다."
+    }
+   ],
+   "weakness": {
+    "type": "풀",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 1,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005036",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/36",
+    "en": "https://limitlesstcg.com/cards/en/DLR/50"
+   },
+   "noJP": "M6 36"
+  },
+  {
+   "no": "037/076",
+   "name": "롱스톤",
+   "nameJP": "イワーク",
+   "nameEN": "Onix",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "격투",
+   "hp": 120,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "가드프레스",
+     "cost": [
+      "무색",
+      "무색",
+      "무색"
+     ],
+     "damage": "80",
+     "text": "상대의 다음 차례에 이 포켓몬이 받는 기술의 데미지는 「-30」이 된다."
+    }
+   ],
+   "weakness": {
+    "type": "풀",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 4,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005037",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/37",
+    "en": "https://limitlesstcg.com/cards/en/DLR/51"
+   },
+   "noJP": "M6 37"
+  },
+  {
+   "no": "038/076",
+   "name": "강철톤",
+   "nameJP": "ハガネール",
+   "nameEN": "Steelix",
+   "rarity": "U",
+   "category": "포켓몬",
+   "stage": "1진화",
+   "evolvesFrom": "롱스톤",
+   "rule": null,
+   "type": "격투",
+   "hp": 190,
+   "ability": {
+    "name": "고밀도아머",
+    "text": "이 포켓몬에게 데미지 카운터가 올려져 있지 않은 상태라면 이 포켓몬이 상대의 포켓몬으로부터 받는 기술의 데미지는 「-60」이 된다."
+   },
+   "attacks": [
+    {
+     "name": "하드스윙",
+     "cost": [
+      "격투",
+      "격투",
+      "무색",
+      "무색"
+     ],
+     "damage": "150",
+     "text": "이 기술의 데미지는 저항력 계산을 하지 않는다."
+    }
+   ],
+   "weakness": {
+    "type": "풀",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 4,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005038",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/38",
+    "en": "https://limitlesstcg.com/cards/en/DLR/52"
+   },
+   "noJP": "M6 38"
+  },
+  {
+   "no": "039/076",
+   "name": "그란돈",
+   "nameJP": "グラードン",
+   "nameEN": "Groudon",
+   "rarity": "R",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "격투",
+   "hp": 150,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "괴력",
+     "cost": [
+      "격투",
+      "무색"
+     ],
+     "damage": "40",
+     "text": ""
+    },
+    {
+     "name": "거친대지",
+     "cost": [
+      "격투",
+      "격투",
+      "무색"
+     ],
+     "damage": "100+",
+     "text": "이름에 「전설」이 적힌 스타디움이 필드에 나와 있다면 170데미지를 추가한다."
+    }
+   ],
+   "weakness": {
+    "type": "풀",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 4,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005039",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/39",
+    "en": "https://limitlesstcg.com/cards/en/DLR/53"
+   },
+   "noJP": "M6 39"
+  },
+  {
+   "no": "040/076",
+   "name": "랜드로스",
+   "nameJP": "ランドロス",
+   "nameEN": "Landorus",
+   "rarity": "U",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "격투",
+   "hp": 130,
+   "ability": {
+    "name": "화신 단결",
+    "text": "자신의 필드에 「토네로스」「볼트로스」「랜드로스」「러브로스」가 있다면 이 포켓몬은 기술을 사용하기 위한 (무색) 에너지가 모두 없어진다."
+   },
+   "attacks": [
+    {
+     "name": "가이아크래시",
+     "cost": [
+      "격투",
+      "무색",
+      "무색"
+     ],
+     "damage": "110",
+     "text": "필드에 나와 있는 스타디움을 트래쉬한다."
+    }
+   ],
+   "weakness": {
+    "type": "풀",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 2,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005040",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/40",
+    "en": "https://limitlesstcg.com/cards/en/DLR/54"
+   },
+   "noJP": "M6 40"
+  },
+  {
+   "no": "041/076",
+   "name": "니드런♀",
+   "nameJP": "ニドラン♀",
+   "nameEN": "Nidoran♀",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "악",
+   "hp": 60,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "친구찾기",
+     "cost": [
+      "무색"
+     ],
+     "damage": null,
+     "text": "자신의 덱에서 포켓몬을 1장 선택해서 상대에게 보여주고 패로 가져온다. 그리고 덱을 섞는다."
+    },
+    {
+     "name": "갉기",
+     "cost": [
+      "악"
+     ],
+     "damage": "10",
+     "text": ""
+    }
+   ],
+   "weakness": {
+    "type": "격투",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 1,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005041",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/41",
+    "en": "https://limitlesstcg.com/cards/en/DLR/55"
+   },
+   "noJP": "M6 41"
+  },
+  {
+   "no": "042/076",
+   "name": "니드리나",
+   "nameJP": "ニドリーナ",
+   "nameEN": "Nidorina",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "1진화",
+   "evolvesFrom": "니드런♀",
+   "rule": null,
+   "type": "악",
+   "hp": 90,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "몸통박치기",
+     "cost": [
+      "악",
+      "무색"
+     ],
+     "damage": "60",
+     "text": ""
+    }
+   ],
+   "weakness": {
+    "type": "격투",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 2,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005042",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/42",
+    "en": "https://limitlesstcg.com/cards/en/DLR/56"
+   },
+   "noJP": "M6 42"
+  },
+  {
+   "no": "043/076",
+   "name": "니드퀸",
+   "nameJP": "ニドクイン",
+   "nameEN": "Nidoqueen",
+   "rarity": "R",
+   "category": "포켓몬",
+   "stage": "2진화",
+   "evolvesFrom": "니드리나",
+   "rule": null,
+   "type": "악",
+   "hp": 170,
+   "ability": {
+    "name": "어머니의 권유",
+    "text": "자신의 차례에 1번 사용할 수 있다. 동전을 1번 던져서 앞면이 나오면 상대의 벤치 포켓몬을 1마리 선택해서 배틀 포켓몬과 교체한다."
+   },
+   "attacks": [
+    {
+     "name": "기가임팩트",
+     "cost": [
+      "악",
+      "무색",
+      "무색"
+     ],
+     "damage": "150",
+     "text": "자신의 다음 차례에 이 포켓몬은 기술을 사용할 수 없다."
+    }
+   ],
+   "weakness": {
+    "type": "격투",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 3,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005043",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/43",
+    "en": "https://limitlesstcg.com/cards/en/DLR/57"
+   },
+   "noJP": "M6 43"
+  },
+  {
+   "no": "044/076",
+   "name": "페이검",
+   "nameJP": "イトマル",
+   "nameEN": "Spinarak",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "악",
+   "hp": 60,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "독침",
+     "cost": [
+      "악"
+     ],
+     "damage": null,
+     "text": "상대의 배틀 포켓몬을 독으로 만든다."
+    },
+    {
+     "name": "버그패닉",
+     "cost": [
+      "무색",
+      "무색",
+      "무색"
+     ],
+     "damage": "50×",
+     "text": "자신의 덱을 아래에서부터 7장 앞면으로 해서 그 중에 있는 기술 「버그패닉」을 가진 포켓몬의 장수 × 50데미지를 준다. 앞면으로 한 포켓몬은 덱으로 되돌리고 섞는다. 남은 카드는 트래쉬한다."
+    }
+   ],
+   "weakness": {
+    "type": "격투",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 1,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005044",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/44",
+    "en": "https://limitlesstcg.com/cards/en/DLR/58"
+   },
+   "noJP": "M6 44"
+  },
+  {
+   "no": "045/076",
+   "name": "아리아도스",
+   "nameJP": "アリアドス",
+   "nameEN": "Ariados",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "1진화",
+   "evolvesFrom": "페이검",
+   "rule": null,
+   "type": "악",
+   "hp": 100,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "격통독",
+     "cost": [
+      "악"
+     ],
+     "damage": null,
+     "text": "상대의 배틀 포켓몬을 독으로 만든다. 이 독으로 올리는 데미지 카운터의 수는 4개가 된다."
+    },
+    {
+     "name": "은밀침",
+     "cost": [
+      "무색",
+      "무색",
+      "무색"
+     ],
+     "damage": "80",
+     "text": "상대의 다음 차례에 이 포켓몬은 기본 포켓몬으로부터 기술의 데미지를 받지 않는다."
+    }
+   ],
+   "weakness": {
+    "type": "격투",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 1,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005045",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/45",
+    "en": "https://limitlesstcg.com/cards/en/DLR/59"
+   },
+   "noJP": "M6 45"
+  },
+  {
+   "no": "046/076",
+   "name": "깜까미",
+   "nameJP": "ヤミラミ",
+   "nameEN": "Sableye",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "악",
+   "hp": 80,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "속여꾀어내기",
+     "cost": [
+      "악"
+     ],
+     "damage": null,
+     "text": "상대의 덱을 위에서부터 5장 앞면으로 해서 그 중에서 기본 포켓몬을 원하는 만큼 선택해서 상대의 벤치로 내보낸다. 남은 카드는 덱으로 되돌리고 섞는다."
+    },
+    {
+     "name": "불길한눈",
+     "cost": [
+      "악",
+      "무색"
+     ],
+     "damage": null,
+     "text": "상대의 포켓몬 1마리에게 데미지 카운터를 5개 올린다."
+    }
+   ],
+   "weakness": {
+    "type": "풀",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 1,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005046",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/46",
+    "en": "https://limitlesstcg.com/cards/en/DLR/60"
+   },
+   "noJP": "M6 46"
+  },
+  {
+   "no": "047/076",
+   "name": "오케이징",
+   "nameJP": "マーイーカ",
+   "nameEN": "Inkay",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "악",
+   "hp": 60,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "탁쳐서떨구기",
+     "cost": [
+      "악"
+     ],
+     "damage": "10",
+     "text": "상대의 패에서 앞면을 보지 않고 1장 선택해서 트래쉬한다."
+    }
+   ],
+   "weakness": {
+    "type": "풀",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 1,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005047",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/47",
+    "en": "https://limitlesstcg.com/cards/en/DLR/68"
+   },
+   "noJP": "M6 47"
+  },
+  {
+   "no": "048/076",
+   "name": "메가칼라마네로 ex",
+   "nameJP": "メガカラマネロex",
+   "nameEN": "Mega Malamar ex",
+   "rarity": "RR",
+   "category": "포켓몬",
+   "stage": "1진화",
+   "evolvesFrom": "오케이징",
+   "rule": "메가진화 ex",
+   "type": "악",
+   "hp": 320,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "사이코 마리오네트",
+     "cost": [
+      "악",
+      "악"
+     ],
+     "damage": "70×",
+     "text": "상대의 벤치 포켓몬의 수 × 70데미지를 준다."
+    },
+    {
+     "name": "음산한염력파",
+     "cost": [
+      "악",
+      "악",
+      "악"
+     ],
+     "damage": "200",
+     "text": "상대의 배틀 포켓몬을 혼란으로 만든다."
+    }
+   ],
+   "weakness": {
+    "type": "풀",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 2,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005048",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/48",
+    "en": "https://limitlesstcg.com/cards/en/DLR/69"
+   },
+   "noJP": "M6 48"
+  },
+  {
+   "no": "049/076",
+   "name": "크리만",
+   "nameJP": "クリムガン",
+   "nameEN": "Druddigon",
+   "rarity": "U",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "드래곤",
+   "hp": 120,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "끌어내기",
+     "cost": [
+      "불꽃",
+      "물"
+     ],
+     "damage": null,
+     "text": "상대의 벤치 포켓몬을 1마리 선택해서 배틀 포켓몬과 교체한다. 그 뒤, 새로 나온 포켓몬에게 40데미지를 준다."
+    },
+    {
+     "name": "발톱 베어가르기",
+     "cost": [
+      "무색",
+      "무색",
+      "무색"
+     ],
+     "damage": "80",
+     "text": ""
+    }
+   ],
+   "weakness": null,
+   "resistance": null,
+   "retreat": 2,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005049",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/49",
+    "en": "https://limitlesstcg.com/cards/en/DLR/72"
+   },
+   "noJP": "M6 49"
+  },
+  {
+   "no": "050/076",
+   "name": "짜랑꼬",
+   "nameJP": "ジャラコ",
+   "nameEN": "Jangmo-o",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "드래곤",
+   "hp": 70,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "단단한머리",
+     "cost": [
+      "번개",
+      "격투"
+     ],
+     "damage": "30",
+     "text": "상대의 다음 차례에 이 포켓몬이 받는 기술의 데미지는 「-30」이 된다."
+    }
+   ],
+   "weakness": null,
+   "resistance": null,
+   "retreat": 1,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005050",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/50",
+    "en": "https://limitlesstcg.com/cards/en/DLR/73"
+   },
+   "noJP": "M6 50"
+  },
+  {
+   "no": "051/076",
+   "name": "짜랑고우",
+   "nameJP": "ジャランゴ",
+   "nameEN": "Hakamo-o",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "1진화",
+   "evolvesFrom": "짜랑꼬",
+   "rule": null,
+   "type": "드래곤",
+   "hp": 100,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "더블스매시",
+     "cost": [
+      "번개",
+      "격투"
+     ],
+     "damage": "70×",
+     "text": "동전을 2번 던져서 앞면이 나온 수 × 70데미지를 준다."
+    }
+   ],
+   "weakness": null,
+   "resistance": null,
+   "retreat": 2,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005051",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/51",
+    "en": "https://limitlesstcg.com/cards/en/DLR/74"
+   },
+   "noJP": "M6 51"
+  },
+  {
+   "no": "052/076",
+   "name": "짜랑고우거",
+   "nameJP": "ジャラランガ",
+   "nameEN": "Kommo-o",
+   "rarity": "R",
+   "category": "포켓몬",
+   "stage": "2진화",
+   "evolvesFrom": "짜랑고우",
+   "rule": null,
+   "type": "드래곤",
+   "hp": 160,
+   "ability": {
+    "name": "스케일 비트",
+    "text": "자신의 차례에 1번 사용할 수 있다. 자신의 덱을 위에서부터 6장 보고 그 중에서 기본 에너지를 원하는 만큼 선택해서 자신의 (드래곤) 포켓몬에게 원하는 대로 붙인다. 남은 카드는 덱으로 되돌리고 섞는다."
+   },
+   "attacks": [
+    {
+     "name": "한방 먹이기",
+     "cost": [
+      "번개",
+      "격투",
+      "무색"
+     ],
+     "damage": "170",
+     "text": ""
+    }
+   ],
+   "weakness": null,
+   "resistance": null,
+   "retreat": 2,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005052",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/52",
+    "en": "https://limitlesstcg.com/cards/en/MEP/114"
+   },
+   "noJP": "M6 52"
+  },
+  {
+   "no": "053/076",
+   "name": "모토마",
+   "nameJP": "モトトカゲ",
+   "nameEN": "Cyclizar",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "드래곤",
+   "hp": 120,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "물기",
+     "cost": [
+      "무색",
+      "무색"
+     ],
+     "damage": "30",
+     "text": ""
+    },
+    {
+     "name": "브레이크스루",
+     "cost": [
+      "풀",
+      "악",
+      "무색"
+     ],
+     "damage": "110",
+     "text": "상대의 벤치 포켓몬 1마리에게도 30데미지를 준다. (벤치는 약점, 저항력 계산을 하지 않는다.)"
+    }
+   ],
+   "weakness": null,
+   "resistance": null,
+   "retreat": 1,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005053",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/53",
+    "en": "https://limitlesstcg.com/cards/en/DLR/76"
+   },
+   "noJP": "M6 53"
+  },
+  {
+   "no": "054/076",
+   "name": "루리리",
+   "nameJP": "ルリリ",
+   "nameEN": "Azurill",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "무색",
+   "hp": 30,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "깡충깡충차지",
+     "cost": [],
+     "damage": null,
+     "text": "자신의 덱에서 에너지를 1장 선택해서 벤치 포켓몬에게 붙인다. 그리고 덱을 섞는다."
+    }
+   ],
+   "weakness": {
+    "type": "격투",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 0,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005054",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/54",
+    "en": "https://limitlesstcg.com/cards/en/DLR/80"
+   },
+   "noJP": "M6 54"
+  },
+  {
+   "no": "055/076",
+   "name": "파비코",
+   "nameJP": "チルット",
+   "nameEN": "Swablu",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "무색",
+   "hp": 50,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "들뜸",
+     "cost": [
+      "무색"
+     ],
+     "damage": null,
+     "text": "이 포켓몬을 벤치 포켓몬과 교체한다."
+    },
+    {
+     "name": "쪼기",
+     "cost": [
+      "무색",
+      "무색"
+     ],
+     "damage": "20",
+     "text": ""
+    }
+   ],
+   "weakness": {
+    "type": "번개",
+    "value": "×2"
+   },
+   "resistance": {
+    "type": "격투",
+    "value": "-30"
+   },
+   "retreat": 1,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005055",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/55",
+    "en": "https://limitlesstcg.com/cards/en/DLR/81"
+   },
+   "noJP": "M6 55"
+  },
+  {
+   "no": "056/076",
+   "name": "파비코리",
+   "nameJP": "チルタリス",
+   "nameEN": "Altaria",
+   "rarity": "R",
+   "category": "포켓몬",
+   "stage": "1진화",
+   "evolvesFrom": "파비코",
+   "rule": null,
+   "type": "무색",
+   "hp": 110,
+   "ability": {
+    "name": "코튼 캐리",
+    "text": "이 포켓몬이 있는 한, 자신의 기본 포켓몬 전원은 후퇴에 필요한 에너지가 모두 없어진다."
+   },
+   "attacks": [
+    {
+     "name": "홰치기",
+     "cost": [
+      "무색",
+      "무색",
+      "무색"
+     ],
+     "damage": "80",
+     "text": ""
+    }
+   ],
+   "weakness": {
+    "type": "번개",
+    "value": "×2"
+   },
+   "resistance": {
+    "type": "격투",
+    "value": "-30"
+   },
+   "retreat": 1,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005056",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/56",
+    "en": "https://limitlesstcg.com/cards/en/DLR/82"
+   },
+   "noJP": "M6 56"
+  },
+  {
+   "no": "057/076",
+   "name": "켈리몬",
+   "nameJP": "カクレオン",
+   "nameEN": "Kecleon",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "무색",
+   "hp": 90,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "컬러풀휩",
+     "cost": [
+      "무색",
+      "무색"
+     ],
+     "damage": "30×",
+     "text": "자신의 패에서 포켓몬을 원하는 만큼 상대에게 보여주고 보여준 포켓몬의 타입의 수 × 30데미지를 준다."
+    }
+   ],
+   "weakness": {
+    "type": "격투",
+    "value": "×2"
+   },
+   "resistance": null,
+   "retreat": 2,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005057",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/57",
+    "en": "https://limitlesstcg.com/cards/en/DLR/83"
+   },
+   "noJP": "M6 57"
+  },
+  {
+   "no": "058/076",
+   "name": "메가레쿠쟈 ex",
+   "nameJP": "メガレックウザex",
+   "nameEN": "Mega Rayquaza ex",
+   "rarity": "RR",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": "메가진화 ex",
+   "type": "무색",
+   "hp": 280,
+   "ability": {
+    "name": "패왕의 포효",
+    "text": "자신의 차례에 이 카드를 패에서 벤치로 내보냈을 때 1번 사용할 수 있다. 자신의 덱을 위에서부터 4장 보고 그 중에서 기본 에너지를 1장 선택해서 이 포켓몬에게 붙인다. 남은 카드는 뒷면으로 하여 섞고 덱의 아래로 되돌린다."
+   },
+   "attacks": [
+    {
+     "name": "스톰에메랄다",
+     "cost": [
+      "불꽃",
+      "번개",
+      "무색"
+     ],
+     "damage": "50×",
+     "text": "자신의 포켓몬 전원에게 붙어 있는 (불꽃) 과 (번개) 에너지의 개수 × 50데미지를 준다."
+    }
+   ],
+   "weakness": {
+    "type": "번개",
+    "value": "×2"
+   },
+   "resistance": {
+    "type": "격투",
+    "value": "-30"
+   },
+   "retreat": 2,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005058",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/58",
+    "en": "https://limitlesstcg.com/cards/en/DLR/84"
+   },
+   "noJP": "M6 58"
+  },
+  {
+   "no": "059/076",
+   "name": "토네로스",
+   "nameJP": "トルネロス",
+   "nameEN": "Tornadus",
+   "rarity": "U",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "무색",
+   "hp": 110,
+   "ability": {
+    "name": "화신 단결",
+    "text": "자신의 필드에 「토네로스」「볼트로스」「랜드로스」「러브로스」가 있다면 이 포켓몬은 기술을 사용하기 위한 (무색) 에너지가 모두 없어진다."
+   },
+   "attacks": [
+    {
+     "name": "스크루다이브",
+     "cost": [
+      "무색",
+      "무색",
+      "무색"
+     ],
+     "damage": "70",
+     "text": "원한다면 자신의 패가 6장이 되도록 덱을 뽑는다."
+    }
+   ],
+   "weakness": {
+    "type": "번개",
+    "value": "×2"
+   },
+   "resistance": {
+    "type": "격투",
+    "value": "-30"
+   },
+   "retreat": 1,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005059",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/59",
+    "en": "https://limitlesstcg.com/cards/en/DLR/85"
+   },
+   "noJP": "M6 59"
+  },
+  {
+   "no": "060/076",
+   "name": "화살꼬빈",
+   "nameJP": "ヤヤコマ",
+   "nameEN": "Fletchling",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "기본",
+   "evolvesFrom": null,
+   "rule": null,
+   "type": "무색",
+   "hp": 60,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "허찌르기",
+     "cost": [
+      "무색"
+     ],
+     "damage": "30",
+     "text": "동전을 1번 던져서 뒷면이 나오면 이 기술은 실패한다."
+    }
+   ],
+   "weakness": {
+    "type": "번개",
+    "value": "×2"
+   },
+   "resistance": {
+    "type": "격투",
+    "value": "-30"
+   },
+   "retreat": 1,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005060",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/60",
+    "en": "https://limitlesstcg.com/cards/en/DLR/86"
+   },
+   "noJP": "M6 60"
+  },
+  {
+   "no": "061/076",
+   "name": "불화살빈",
+   "nameJP": "ヒノヤコマ",
+   "nameEN": "Fletchinder",
+   "rarity": "C",
+   "category": "포켓몬",
+   "stage": "1진화",
+   "evolvesFrom": "화살꼬빈",
+   "rule": null,
+   "type": "무색",
+   "hp": 80,
+   "ability": null,
+   "attacks": [
+    {
+     "name": "꽉쥐기",
+     "cost": [
+      "무색",
+      "무색"
+     ],
+     "damage": "40",
+     "text": "상대의 다음 차례에 이 기술을 받은 포켓몬은 후퇴할 수 없다."
+    }
+   ],
+   "weakness": {
+    "type": "번개",
+    "value": "×2"
+   },
+   "resistance": {
+    "type": "격투",
+    "value": "-30"
+   },
+   "retreat": 0,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005061",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/61",
+    "en": "https://limitlesstcg.com/cards/en/DLR/87"
+   },
+   "noJP": "M6 61"
+  },
+  {
+   "no": "062/076",
+   "name": "파이어로 ex",
+   "nameJP": "ファイアローex",
+   "nameEN": "Talonflame ex",
+   "rarity": "RR",
+   "category": "포켓몬",
+   "stage": "2진화",
+   "evolvesFrom": "불화살빈",
+   "rule": "포켓몬 ex",
+   "type": "무색",
+   "hp": 280,
+   "ability": {
+    "name": "익사이팅 다이브",
+    "text": "자신의 차례에 이 카드가 패에 있고 자신의 필드에 (무색) 타입의 「메가진화 [ex]」가 있다면 1번 사용할 수 있다. 이 카드를 벤치로 내보낸다."
+   },
+   "attacks": [
+    {
+     "name": "갈고리손톱 헌트",
+     "cost": [
+      "무색",
+      "무색"
+     ],
+     "damage": "150",
+     "text": "원한다면 자신의 덱에서 원하는 카드를 2장까지 선택해서 패로 가져온다. 그리고 덱을 섞는다."
+    }
+   ],
+   "weakness": {
+    "type": "번개",
+    "value": "×2"
+   },
+   "resistance": {
+    "type": "격투",
+    "value": "-30"
+   },
+   "retreat": 0,
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005062",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/62",
+    "en": "https://limitlesstcg.com/cards/en/DLR/88"
+   },
+   "noJP": "M6 62"
+  },
+  {
+   "no": "063/076",
+   "name": "맛있는 주먹밥",
+   "nameJP": "おいしいおむすび",
+   "nameEN": "Tasty Rice Ball",
+   "rarity": "C",
+   "category": "아이템",
+   "effect": "자신의 배틀 포켓몬의 HP를 「30」회복한다. 자신의 트래쉬에 있는 「맛있는 주먹밥」(이 카드는 제외) 1장당 회복하는 HP는 「30」 많아진다.",
+   "rulesText": [],
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005063",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/63",
+    "en": "https://limitlesstcg.com/cards/en/DLR/101"
+   },
+   "noJP": "M6 63"
+  },
+  {
+   "no": "064/076",
+   "name": "모험 랜턴",
+   "nameJP": "ぼうけんのランタン",
+   "nameEN": "Adventure Lantern",
+   "rarity": "U",
+   "category": "아이템",
+   "effect": "자신의 덱에서 「기본 (불꽃) 에너지」와 「기본 (번개) 에너지」를 1장씩 선택해서 상대에게 보여주고 패로 가져온다. 그리고 덱을 섞는다.",
+   "rulesText": [
+    "아이템은 자신의 차례에 몇 장이라도 사용할 수 있다."
+   ],
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005064",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/64",
+    "en": "https://limitlesstcg.com/cards/en/DLR/90"
+   },
+   "noJP": "M6 64"
+  },
+  {
+   "no": "065/076",
+   "name": "메가레쿠쟈캡",
+   "nameJP": "メガレックウザキャップ",
+   "nameEN": "Mega Rayquaza Cap",
+   "rarity": "U",
+   "category": "포켓몬의 도구",
+   "effect": "이 카드를 붙이고 있는 포켓몬은 이 카드에 적혀 있는 기술을 사용할 수 있다. (기술을 사용하기 위한 에너지는 필요하다.)",
+   "attacks": [
+    {
+     "name": "델타기프트",
+     "cost": [
+      "무색"
+     ],
+     "damage": null,
+     "text": "「메가레쿠쟈캡」이 붙어 있는 자신의 포켓몬 전원에게 덱에서 기본 에너지를 1장씩 붙인다. 그리고 덱을 섞는다."
+    }
+   ],
+   "rulesText": [
+    "포켓몬의 도구는 자신의 차례에 몇 장이라도 자신의 포켓몬에게 붙일 수 있다. 포켓몬 1마리에게 1장만 붙일 수 있고 붙인 채로 둔다."
+   ],
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005065",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/66",
+    "en": "https://limitlesstcg.com/cards/en/DLR/100"
+   },
+   "noJP": "M6 66"
+  },
+  {
+   "no": "066/076",
+   "name": "특별주문조끼",
+   "nameJP": "とくちゅうチョッキ",
+   "nameEN": "Custom Vest",
+   "rarity": "U",
+   "category": "포켓몬의 도구",
+   "effect": "이 카드를 붙이고 있는 포켓몬(「메가진화 [ex]」는 제외)이 상대의 「메가진화 [ex]」로부터 받는 기술의 데미지는 「-60」이 된다.",
+   "rulesText": [
+    "포켓몬의 도구는 자신의 차례에 몇 장이라도 자신의 포켓몬에게 붙일 수 있다. 포켓몬 1마리에게 1장만 붙일 수 있고 붙인 채로 둔다."
+   ],
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005066",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/65",
+    "en": "https://limitlesstcg.com/cards/en/DLR/91"
+   },
+   "noJP": "M6 65"
+  },
+  {
+   "no": "067/076",
+   "name": "MC의 호응유도",
+   "nameJP": "MCの盛り上げ",
+   "nameEN": "Emcee's Hype",
+   "rarity": "C",
+   "category": "서포트",
+   "effect": "자신의 덱을 2장 뽑는다. 상대의 남은 프라이즈 장수가 3장 이하라면 2장 더 뽑는다.",
+   "rulesText": [
+    "서포트는 자신의 차례에 1장만 사용할 수 있다."
+   ],
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005067",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/67",
+    "en": "https://limitlesstcg.com/cards/en/DRI/163"
+   },
+   "noJP": "M6 67"
+  },
+  {
+   "no": "068/076",
+   "name": "성한",
+   "nameJP": "ギリー",
+   "nameEN": "Aarune",
+   "rarity": "U",
+   "category": "서포트",
+   "effect": "자신의 덱에서 서포트와 스타디움을 합계 3장까지 선택해서 상대에게 보여주고 패로 가져온다. 그리고 덱을 섞는다.",
+   "rulesText": [
+    "서포트는 자신의 차례에 1장만 사용할 수 있다."
+   ],
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005068",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/68",
+    "en": "https://limitlesstcg.com/cards/en/DLR/89"
+   },
+   "noJP": "M6 68"
+  },
+  {
+   "no": "069/076",
+   "name": "풍&란의 수행",
+   "nameJP": "フウとランの修行",
+   "nameEN": "Tate & Liza's Training",
+   "rarity": "U",
+   "category": "서포트",
+   "effect": "자신의 덱을 2장 뽑는다. 그 뒤, 이름에 「전설」이 적힌 스타디움이 필드에 나와 있다면 이 「풍&란의 수행」은 트래쉬하지 않고 패로 되돌린다.",
+   "rulesText": [
+    "서포트는 자신의 차례에 1장만 사용할 수 있다."
+   ],
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005069",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/70",
+    "en": "https://limitlesstcg.com/cards/en/DLR/102"
+   },
+   "noJP": "M6 70"
+  },
+  {
+   "no": "070/076",
+   "name": "피아나의 신뢰",
+   "nameJP": "ヒガナの信頼",
+   "nameEN": "Zinnia's Trust",
+   "rarity": "U",
+   "category": "서포트",
+   "effect": "자신의 배틀 포켓몬을 벤치 포켓몬과 교체한다. 그 뒤, 벤치로 교체한 포켓몬에게 붙어 있는 에너지를 1개 선택해서 새로운 배틀 포켓몬에게 붙인다.",
+   "rulesText": [
+    "서포트는 자신의 차례에 1장만 사용할 수 있다."
+   ],
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005070",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/69",
+    "en": "https://limitlesstcg.com/cards/en/DLR/103"
+   },
+   "noJP": "M6 69"
+  },
+  {
+   "no": "071/076(좌측)",
+   "name": "전설의 산정",
+   "nameJP": "伝説の山頂",
+   "nameEN": "Legendary Summit",
+   "rarity": "U",
+   "category": "스타디움",
+   "pairRule": "이 카드는 1장만으로는 내놓을 수 없고 자신의 패에서 2종류의 「전설의 산정」을 조합하여 1장의 스타디움으로서 필드에 내보낸다.",
+   "effect": "서로의 (무색) 포켓몬이 상대의 포켓몬으로부터 기술의 데미지를 받아 기절했을 때 가져갈 수 있는 프라이즈는 1장 적어진다.",
+   "rulesText": [
+    "스타디움은 자신의 차례에 1장 배틀필드 옆에 내놓을 수 있다. 다른 스타디움이 필드에 나오면 이 카드를 트래쉬한다. 같은 이름의 스타디움은 필드에 내보낼 수 없다.",
+    "[좌측]카드와 [우측]카드를 조합할 시 사용 가능 카드"
+   ],
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005071",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/73",
+    "en": "https://limitlesstcg.com/cards/en/DLR/96"
+   },
+   "noJP": "M6 73"
+  },
+  {
+   "no": "072/076(우측)",
+   "name": "전설의 산정",
+   "nameJP": "伝説の山頂",
+   "nameEN": "Legendary Summit",
+   "rarity": "U",
+   "category": "스타디움",
+   "pairRule": "이 카드는 1장만으로는 내놓을 수 없고 자신의 패에서 2종류의 「전설의 산정」을 조합하여 1장의 스타디움으로서 필드에 내보낸다.",
+   "effect": "서로의 (무색) 포켓몬이 상대의 포켓몬으로부터 기술의 데미지를 받아 기절했을 때 가져갈 수 있는 프라이즈는 1장 적어진다.",
+   "rulesText": [
+    "스타디움은 자신의 차례에 1장 배틀필드 옆에 내놓을 수 있다. 다른 스타디움이 필드에 나오면 이 카드를 트래쉬한다. 같은 이름의 스타디움은 필드에 내보낼 수 없다.",
+    "[좌측]카드와 [우측]카드를 조합할 시 사용 가능 카드"
+   ],
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005071",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/74",
+    "en": "https://limitlesstcg.com/cards/en/DLR/96"
+   },
+   "note": "한국 공식 사이트에 우측 카드 개별 페이지가 없음(서버 500). 좌측 페이지 원문을 그대로 사용.",
+   "noJP": "M6 74"
+  },
+  {
+   "no": "073/076(좌측)",
+   "name": "전설의 용암동굴",
+   "nameJP": "伝説の溶岩洞",
+   "nameEN": "Legendary Pyroduct",
+   "rarity": "U",
+   "category": "스타디움",
+   "pairRule": "이 카드는 1장만으로는 내놓을 수 없고 자신의 패에서 2종류의 「전설의 용암동굴」을 조합하여 1장의 스타디움으로서 필드에 내보낸다.",
+   "effect": "서로의 필드의 진화 포켓몬 전원은 특성이 모두 없어진다.",
+   "rulesText": [
+    "스타디움은 자신의 차례에 1장 배틀필드 옆에 내놓을 수 있다. 다른 스타디움이 필드에 나오면 이 카드를 트래쉬한다. 같은 이름의 스타디움은 필드에 내보낼 수 없다.",
+    "[좌측]카드와 [우측]카드를 조합할 시 사용 가능 카드"
+   ],
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005073",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/75",
+    "en": "https://limitlesstcg.com/cards/en/DLR/94"
+   },
+   "noJP": "M6 75"
+  },
+  {
+   "no": "074/076(우측)",
+   "name": "전설의 용암동굴",
+   "nameJP": "伝説の溶岩洞",
+   "nameEN": "Legendary Pyroduct",
+   "rarity": "U",
+   "category": "스타디움",
+   "pairRule": "이 카드는 1장만으로는 내놓을 수 없고 자신의 패에서 2종류의 「전설의 용암동굴」을 조합하여 1장의 스타디움으로서 필드에 내보낸다.",
+   "effect": "서로의 필드의 진화 포켓몬 전원은 특성이 모두 없어진다.",
+   "rulesText": [
+    "스타디움은 자신의 차례에 1장 배틀필드 옆에 내놓을 수 있다. 다른 스타디움이 필드에 나오면 이 카드를 트래쉬한다. 같은 이름의 스타디움은 필드에 내보낼 수 없다.",
+    "[좌측]카드와 [우측]카드를 조합할 시 사용 가능 카드"
+   ],
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005073",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/76",
+    "en": "https://limitlesstcg.com/cards/en/DLR/94"
+   },
+   "note": "한국 공식 사이트에 우측 카드 개별 페이지가 없음(서버 500). 좌측 페이지 원문을 그대로 사용.",
+   "noJP": "M6 76"
+  },
+  {
+   "no": "075/076(좌측)",
+   "name": "전설의 해구",
+   "nameJP": "伝説の海溝",
+   "nameEN": "Legendary Trench",
+   "rarity": "U",
+   "category": "스타디움",
+   "pairRule": "이 카드는 1장만으로는 내놓을 수 없고 자신의 패에서 2종류의 「전설의 해구」를 조합하여 1장의 스타디움으로서 필드에 내보낸다.",
+   "effect": "서로의 포켓몬 전원은 HP를 회복할 때 회복하는 HP가 2배가 된다.",
+   "rulesText": [
+    "스타디움은 자신의 차례에 1장 배틀필드 옆에 내놓을 수 있다. 다른 스타디움이 필드에 나오면 이 카드를 트래쉬한다. 같은 이름의 스타디움은 필드에 내보낼 수 없다.",
+    "[좌측]카드와 [우측]카드를 조합할 시 사용 가능 카드"
+   ],
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005075",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/71",
+    "en": "https://limitlesstcg.com/cards/en/DLR/98"
+   },
+   "noJP": "M6 71"
+  },
+  {
+   "no": "076/076(우측)",
+   "name": "전설의 해구",
+   "nameJP": "伝説の海溝",
+   "nameEN": "Legendary Trench",
+   "rarity": "U",
+   "category": "스타디움",
+   "pairRule": "이 카드는 1장만으로는 내놓을 수 없고 자신의 패에서 2종류의 「전설의 해구」를 조합하여 1장의 스타디움으로서 필드에 내보낸다.",
+   "effect": "서로의 포켓몬 전원은 HP를 회복할 때 회복하는 HP가 2배가 된다.",
+   "rulesText": [
+    "스타디움은 자신의 차례에 1장 배틀필드 옆에 내놓을 수 있다. 다른 스타디움이 필드에 나오면 이 카드를 트래쉬한다. 같은 이름의 스타디움은 필드에 내보낼 수 없다.",
+    "[좌측]카드와 [우측]카드를 조합할 시 사용 가능 카드"
+   ],
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005075",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/72",
+    "en": "https://limitlesstcg.com/cards/en/DLR/98"
+   },
+   "note": "한국 공식 사이트에 우측 카드 개별 페이지가 없음(서버 500). 좌측 페이지 원문을 그대로 사용.",
+   "noJP": "M6 72"
+  },
+  {
+   "no": "88/M-P",
+   "name": "가이",
+   "nameJP": "ガイ",
+   "nameEN": "Urbain",
+   "rarity": null,
+   "category": "서포트",
+   "effect": "자신의 덱을 3장 뽑는다.",
+   "rulesText": [
+    "서포트는 자신의 차례에 1장만 사용할 수 있다."
+   ],
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/MP000000081",
+    "jp": "https://limitlesstcg.com/cards/jp/MP/136",
+    "en": "https://limitlesstcg.com/cards/en/ASC/214"
+   },
+   "noJP": "MP 136",
+   "note": "한국 번호는 한국 프로모(M-P). 일본어·영어 이름은 같은 이름·같은 효과의 일본 프로모 카드에서 확인(일본 실드전 지급 카드와 같은 번호인지는 미확인)."
+  },
+  {
+   "no": "87/M-P",
+   "name": "포켓패드",
+   "nameJP": "ポケパッド",
+   "nameEN": "Poké Pad",
+   "rarity": null,
+   "category": "아이템",
+   "effect": "자신의 덱에서 포켓몬(「룰을 가진 포켓몬」은 제외)을 1장 선택해서 상대에게 보여주고 패로 가져온다. 그리고 덱을 섞는다.",
+   "rulesText": [
+    "아이템은 자신의 차례에 몇 장이라도 사용할 수 있다."
+   ],
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/MP000000080",
+    "jp": "https://limitlesstcg.com/cards/jp/MP/135",
+    "en": "https://limitlesstcg.com/cards/en/ASC/198"
+   },
+   "noJP": "MP 135",
+   "note": "한국 번호는 한국 프로모(M-P). 일본어·영어 이름은 같은 이름·같은 효과의 일본 프로모 카드에서 확인(일본 실드전 지급 카드와 같은 번호인지는 미확인)."
+  },
+  {
+   "no": "098/076",
+   "name": "포켓몬 캐처",
+   "nameJP": "ポケモンキャッチャー",
+   "nameEN": "Pokémon Catcher",
+   "rarity": "SR",
+   "category": "아이템",
+   "effect": "동전을 1번 던져서 앞면이 나오면 상대의 벤치 포켓몬을 1마리 선택해서 배틀 포켓몬과 교체한다.",
+   "rulesText": [
+    "아이템은 자신의 차례에 몇 장이라도 사용할 수 있다."
+   ],
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005098",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/98",
+    "en": "https://limitlesstcg.com/cards/en/EPO/95"
+   },
+   "noJP": "M6 98"
+  },
+  {
+   "no": "104/076",
+   "name": "그로우 풀 에너지",
+   "nameJP": "グロウ草エネルギー",
+   "nameEN": "Growing Grass Energy",
+   "rarity": "SR",
+   "category": "특수 에너지",
+   "effect": "이 카드는 포켓몬에게 붙어 있는 한, (풀) 에너지 1개분으로 작용한다. 이 카드를 붙이고 있는 (풀) 포켓몬은 최대 HP가 「+20」이 된다.",
+   "rulesText": [],
+   "energyType": "풀",
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005104",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/104",
+    "en": "https://limitlesstcg.com/cards/en/POR/86"
+   },
+   "noJP": "M6 104"
+  },
+  {
+   "no": "105/076",
+   "name": "니트로 불꽃 에너지",
+   "nameJP": "ニトロ炎エネルギー",
+   "nameEN": "Nitro Fire Energy",
+   "rarity": "SR",
+   "category": "특수 에너지",
+   "effect": "이 카드는 포켓몬에게 붙어 있는 한, (불꽃) 에너지 1개분으로 작용한다. 이 카드를 붙이고 있는 (불꽃) 포켓몬이 사용하는 기술의 효과로 이 카드가 트래쉬되면 기술의 데미지나 효과를 준 후, 패로 되돌린다.",
+   "rulesText": [],
+   "energyType": "불꽃",
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005105",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/105",
+    "en": "https://limitlesstcg.com/cards/en/CRI/86"
+   },
+   "noJP": "M6 105"
+  },
+  {
+   "no": "106/076",
+   "name": "버블 물 에너지",
+   "nameJP": "バブル水エネルギー",
+   "nameEN": "Bubbly Water Energy",
+   "rarity": "SR",
+   "category": "특수 에너지",
+   "effect": "이 카드는 포켓몬에게 붙어 있는 한, (물) 에너지 1개분으로 작용한다. 이 카드를 붙이고 있는 (물) 포켓몬은 특수 상태가 되지 않으며 받고 있는 특수 상태는 모두 회복한다.",
+   "rulesText": [],
+   "energyType": "물",
+   "implemented": false,
+   "source": {
+    "kr": "https://pokemoncard.co.kr/cards/detail/BS2026005106",
+    "jp": "https://limitlesstcg.com/cards/jp/M6/106",
+    "en": "https://limitlesstcg.com/cards/en/CRI/84"
+   },
+   "noJP": "M6 106"
+  }
+ ],
+ "variants": [
+  {
+   "no": "077/076",
+   "rarity": "AR",
+   "name": "비나방",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005077",
+   "baseNo": "003/076"
+  },
+  {
+   "no": "078/076",
+   "rarity": "AR",
+   "name": "가디",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005078",
+   "baseNo": "010/076"
+  },
+  {
+   "no": "079/076",
+   "rarity": "AR",
+   "name": "마그마번",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005079",
+   "baseNo": "013/076"
+  },
+  {
+   "no": "080/076",
+   "rarity": "AR",
+   "name": "가이오가",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005080",
+   "baseNo": "018/076"
+  },
+  {
+   "no": "081/076",
+   "rarity": "AR",
+   "name": "에레키블",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005081",
+   "baseNo": "023/076"
+  },
+  {
+   "no": "082/076",
+   "rarity": "AR",
+   "name": "찌르성게",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005082",
+   "baseNo": "026/076"
+  },
+  {
+   "no": "083/076",
+   "rarity": "AR",
+   "name": "러브로스",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005083",
+   "baseNo": "034/076"
+  },
+  {
+   "no": "084/076",
+   "rarity": "AR",
+   "name": "그란돈",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005084",
+   "baseNo": "039/076"
+  },
+  {
+   "no": "085/076",
+   "rarity": "AR",
+   "name": "오케이징",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005085",
+   "baseNo": "047/076"
+  },
+  {
+   "no": "086/076",
+   "rarity": "AR",
+   "name": "루리리",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005086",
+   "baseNo": "054/076"
+  },
+  {
+   "no": "087/076",
+   "rarity": "AR",
+   "name": "파비코리",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005087",
+   "baseNo": "056/076"
+  },
+  {
+   "no": "088/076",
+   "rarity": "AR",
+   "name": "켈리몬",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005088",
+   "baseNo": "057/076"
+  },
+  {
+   "no": "089/076",
+   "rarity": "SR",
+   "name": "메가갑주무사 ex",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005089",
+   "baseNo": "009/076"
+  },
+  {
+   "no": "090/076",
+   "rarity": "SR",
+   "name": "히트로토무 ex",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005090",
+   "baseNo": "015/076"
+  },
+  {
+   "no": "091/076",
+   "rarity": "SR",
+   "name": "약어리 ex",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005091",
+   "baseNo": "021/076"
+  },
+  {
+   "no": "092/076",
+   "rarity": "SR",
+   "name": "라이코 ex",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005092",
+   "baseNo": "024/076"
+  },
+  {
+   "no": "093/076",
+   "rarity": "SR",
+   "name": "메가골루그 ex",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005093",
+   "baseNo": "033/076"
+  },
+  {
+   "no": "094/076",
+   "rarity": "SR",
+   "name": "메가칼라마네로 ex",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005094",
+   "baseNo": "048/076"
+  },
+  {
+   "no": "095/076",
+   "rarity": "SR",
+   "name": "메가레쿠쟈 ex",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005095",
+   "baseNo": "058/076"
+  },
+  {
+   "no": "096/076",
+   "rarity": "SR",
+   "name": "파이어로 ex",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005096",
+   "baseNo": "062/076"
+  },
+  {
+   "no": "097/076",
+   "rarity": "SR",
+   "name": "모험 랜턴",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005097",
+   "baseNo": "064/076"
+  },
+  {
+   "no": "098/076",
+   "rarity": "SR",
+   "name": "포켓몬 캐처",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005098",
+   "baseNo": "098/076"
+  },
+  {
+   "no": "099/076",
+   "rarity": "SR",
+   "name": "특별주문조끼",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005099",
+   "baseNo": "066/076"
+  },
+  {
+   "no": "100/076",
+   "rarity": "SR",
+   "name": "MC의 호응유도",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005100",
+   "baseNo": "067/076"
+  },
+  {
+   "no": "101/076",
+   "rarity": "SR",
+   "name": "성한",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005101",
+   "baseNo": "068/076"
+  },
+  {
+   "no": "102/076",
+   "rarity": "SR",
+   "name": "풍&란의 수행",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005102",
+   "baseNo": "069/076"
+  },
+  {
+   "no": "103/076",
+   "rarity": "SR",
+   "name": "피아나의 신뢰",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005103",
+   "baseNo": "070/076"
+  },
+  {
+   "no": "104/076",
+   "rarity": "SR",
+   "name": "그로우 풀 에너지",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005104",
+   "baseNo": "104/076"
+  },
+  {
+   "no": "105/076",
+   "rarity": "SR",
+   "name": "니트로 불꽃 에너지",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005105",
+   "baseNo": "105/076"
+  },
+  {
+   "no": "106/076",
+   "rarity": "SR",
+   "name": "버블 물 에너지",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005106",
+   "baseNo": "106/076"
+  },
+  {
+   "no": "107/076",
+   "rarity": "SAR",
+   "name": "메가갑주무사 ex",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005107",
+   "baseNo": "009/076"
+  },
+  {
+   "no": "108/076",
+   "rarity": "SAR",
+   "name": "라이코 ex",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005108",
+   "baseNo": "024/076"
+  },
+  {
+   "no": "109/076",
+   "rarity": "SAR",
+   "name": "메가골루그 ex",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005109",
+   "baseNo": "033/076"
+  },
+  {
+   "no": "110/076",
+   "rarity": "SAR",
+   "name": "메가레쿠쟈 ex",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005110",
+   "baseNo": "058/076"
+  },
+  {
+   "no": "111/076",
+   "rarity": "SAR",
+   "name": "성한",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005111",
+   "baseNo": "068/076"
+  },
+  {
+   "no": "112/076",
+   "rarity": "SAR",
+   "name": "피아나의 신뢰",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005112",
+   "baseNo": "070/076"
+  },
+  {
+   "no": "113/076",
+   "rarity": "MUR",
+   "name": "메가레쿠쟈 ex",
+   "source": "https://pokemoncard.co.kr/cards/detail/BS2026005113",
+   "baseNo": "058/076"
+  }
+ ]
+}

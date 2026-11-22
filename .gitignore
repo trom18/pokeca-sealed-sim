@@ -1,0 +1,8 @@
+# 공개 저장소(GitHub Pages)에는 게임 파일만 올린다.
+# inbox의 PDF·후기, docs, CLAUDE.md, 테스트, 설정 파일은 올리지 않는다.
+/*
+!/.gitignore
+!/index.html
+!/style.css
+!/src/
+!/data/
